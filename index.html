@@ -26,6 +26,12 @@
                 <p class="strat-name"></p>
                 <p class="strat-desc"></p>
             </div>
+            <div class="info-container">
+                <p class="info">'1' - Random Agent<br>'2' - Random Weapon (All)<br>'3' - Random Weapon (Primary)<br>'4' - Random Weapon (Secondary)<br>'5' - Random Strat</p>
+            </div>
+        </div>
+        <div class="credits-container">
+            <p class="credits">Credit for all images used goes to <a target="_blank" href="https://playvalorant.com/">VALORANT</a> and <a target="_blank" href="https://www.riotgames.com/">Riot Games</a>. ⠀⠀Credit for the Random Strats goes to <a target="_blank" href="https://www.reddit.com/user/Kearnerr/">u/Kearnerr</a> and his post <a target="_blank" href="https://www.reddit.com/r/VALORANT/comments/k8rebf/unofficial_guide_to_the_pick_my_strat_spray/">here</a></p>
         </div>
     </div>
 <script>
@@ -142,18 +148,15 @@
                 // Agent 1
                 randomAgent(1);
             } else if (code == 50) {
-                // Agent 2
-                randomAgent(2);
-            } else if (code == 51) {
                 // Weapon All
                 randomWeapon("all");
-            } else if (code == 52) {
+            } else if (code == 51) {
                 // Weapon Primary
                 randomWeapon("primary");
-            } else if (code == 53) {
+            } else if (code == 52) {
                 // Weapon Secondary
                 randomWeapon("secondary");
-            } else if (code == 54) {
+            } else if (code == 53) {
                 // Round Style
                 randomStrat();
             }
