@@ -8,27 +8,39 @@
     src: url("fonts/Mark-Pro.woff2");
 }
 
+
+
 html, body {
     margin: 0px;
     padding: 0px;
     background-image: url("images/agent-background.jpg");
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none;
 }
 
 div.container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    width: 850px;
 }
 
 div.agent-container {
     border: 3px solid #fa4454;
     background-color: rgba(0,0,0,0.5);
     color: white;
-    width: 600px;
+    width: 350px;
     height: 500px;
     vertical-align: middle;
     padding:20px;
     border-radius: 30px;
     margin: 20px;
+}
+
+div.other-container {
+    width: 400px;
 }
 
 div.weapon-container {
@@ -71,7 +83,7 @@ div.credits-container {
     border: 3px solid #fa4454;
     background-color: rgba(0,0,0,0.5);
     color: white;
-    width: 1090px;
+    width: 840px;
     height: 10px;
     vertical-align: middle;
     padding: 20px;
@@ -91,8 +103,8 @@ img.type-image {
     width: 25px;
     height: auto;
     position: relative;
-    top: -450px;
-    left: -320px;
+    top: -505px;
+    left: 0px;
 }
 
 img.weapon-image {
@@ -105,14 +117,14 @@ p.agent-name {
     font-family: "Tungsten";
     font-size: 5em;
     position: relative;
-    top: -630px;
-    left: 300px;
+    top: -240px;
+    left: 50px;
 }
 
 p.agent-number {
     font-family: "Mark Pro";
     position: relative;
-    top: -513px;
+    top: -122px;
     left: -305px;
     text-align: right;
 }
@@ -121,8 +133,8 @@ p.agent-type {
     position: relative;
     font-family: "Mark Pro";
     text-align: left;
-    top: -725px;
-    left: 301px;
+    top: -340px;
+    left: 50px;
     width: 500px;
     letter-spacing: 3px;
     font-variant: small-caps;

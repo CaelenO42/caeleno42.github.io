@@ -17,7 +17,7 @@
             <p class="agent-name 1"></p>
             <p class="agent-type 1"></p>
         </div>
-        <div>
+        <div class="other-container">
             <div class="weapon-container" onClick="randomWeapon('all');">
                 <span class="weapon-image-container"></span>
                 <p class="weapon-name"></p>
@@ -30,11 +30,28 @@
                 <p class="info">'1' - Random Agent<br>'2' - Random Weapon (All)<br>'3' - Random Weapon (Primary)<br>'4' - Random Weapon (Secondary)<br>'5' - Random Strat</p>
             </div>
         </div>
-        <div class="credits-container">
-            <p class="credits">Credit for all images used goes to <a target="_blank" href="https://playvalorant.com/">VALORANT</a> and <a target="_blank" href="https://www.riotgames.com/">Riot Games</a>. ⠀⠀Credit for the Random Strats goes to <a target="_blank" href="https://www.reddit.com/user/Kearnerr/">u/Kearnerr</a> and his post <a target="_blank" href="https://www.reddit.com/r/VALORANT/comments/k8rebf/unofficial_guide_to_the_pick_my_strat_spray/">here</a></p>
-        </div>
     </div>
+    <div class="credits-container">
+            <p class="credits">Credit for images goes to <a target="_blank" href="https://playvalorant.com/">VALORANT</a> and <a target="_blank" href="https://www.riotgames.com/">Riot Games</a>. ⠀⠀Credit for the Random Strats goes to <a target="_blank" href="https://www.reddit.com/user/Kearnerr/">u/Kearnerr</a></p>
+        </div>
 <script>
+    if ($(window).width() < 900) {
+        console.log("aaa");
+        $(".container").css('grid-template-columns', 'repeat(1, 1fr)');
+        $(".container").css('width', '100vw');
+        $(".other-container").css('width', '100vw');
+        $(".agent-container").css('margin', '20px auto');
+        $(".strat-container").css('margin', '20px auto');
+        $(".info-container").css('visibility', 'hidden');
+        $(".weapon-container").css('margin', '20px auto');
+        $(".credits-container").css('margin', '20px auto');
+        $(".credits-container").css('width', '80vw');
+        $(".credits-container").css('height', '35px');
+        $("body").css('overflow', 'hidden');
+        $(".credits-container").css('position', 'relative');
+        $(".credits-container").css('top', '-180px');
+    }
+    
     var agents = [
                    {name: "Astra", number:"15", type:"Controller", img:"./images/agents/astra.png"},
                    {name: "Breach", number:"09", type:"Initiator", img:"./images/agents/breach.png"},
