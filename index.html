@@ -45,6 +45,18 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
         console.log("aaa");
         $(".container").css('grid-template-columns', 'repeat(1, 1fr)');
         $(".container").css('width', '100vw');
+        $(".agent-container").css('width', '80vw');
+        $(".agent-container").css('height', '120vw');
+        $(".agent-type-container").css('position', 'relative');
+        $(".agent-type-container").css('top', '-675px');
+        $(".type-image").css('width', '50px');
+        $(".agent-name").css('font-size', '10em');
+        $(".agent-name").css('top', '-460px');
+        $(".agent-type").css('font-size', '2em');
+        $(".agent-type").css('top', '-660px');
+        $(".agent-number").css('font-size', '2em');
+        $(".agent-number").css('top', '-225px');
+        $(".agent-number").css('left', '-740px');
         $(".other-container").css('width', '100vw');
         $(".agent-container").css('margin', '20px auto');
         $(".strat-container").css('margin', '20px auto');
@@ -55,7 +67,18 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
         $(".credits-container").css('height', '35px');
         $("body").css('overflow', 'hidden');
         $(".credits-container").css('position', 'relative');
-        $(".credits-container").css('top', '-180px');
+        $(".credits-container").css('top', '-180px');   
+        $(".weapon-container").css('width', '80vw');
+        $(".weapon-container").css('height', '30vw');
+        $(".weapon-name").css('font-size', '8em');
+        $(".weapon-name").css('top', '-500px');
+        $(".strat-container").css('width', '80vw');
+        $(".strat-container").css('height', '30vw');
+        $(".strat-name").css('font-size', '8em');
+        $(".strat-desc").css('font-size', '2em');
+        $(".strat-name").css('margin', '0.4em 0px');
+        $(".strat-desc").css('margin', '0px');
+        
     }
     
     var agents = [
@@ -151,13 +174,15 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
         $(".agent-name."+pos).html(agent.name.toUpperCase());
         $(".agent-number."+pos).html(agent.number);
         $(".agent-type."+pos).html(agent.type.toLowerCase());
-        $(".agent-image-container."+pos).html('<img src="' + agent.img + '" class="agent-image ' + pos + '"></img>');
-        $(".agent-type-container."+pos).html('<img src="./images/types/' + agent.type.toLowerCase()  + '.png" class="type-image ' + pos + '"></img>');
+        $(".agent-image-container."+pos).html('<img src="' + agent.img + '" class="agent-image"></img>');
+        $(".agent-type-container."+pos).html('<img src="./images/types/' + agent.type.toLowerCase()  + '.png" class="type-image"></img>');
+        if (isMobile) $(".type-image").css('width', '50px');
     }
     
     function printWeapon(weapon) {
         $(".weapon-name").html(weapon.name.toUpperCase());
         $(".weapon-image-container").html('<img src="' + weapon.img + '" class="weapon-image"></img>');
+        if (isMobile) $(".weapon-name").css('top', '-230px');
     }
     
     function printStrat(strat) {
