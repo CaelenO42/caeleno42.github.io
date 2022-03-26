@@ -1,3 +1,3 @@
 # caeleno42.github.io
 
-GitHub Pages for the VALORANT randomizer I built as a fun side project
+GitHub Pages for the code projects that I am currently working on / have finished!

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<title>CaelenO42 | &lt;valorant\&gt;</title>
+<link rel="stylesheet" type="text/css" href="css/valorant.css">
+</head>
+<body onload="loadFunction()">
+    <button onclick="window.location.href = '../index.html'" class="mobile-button">Back to Home</button>
+    <section>
+        <div class="agent-container" onclick="randomAgent()">
+            <img class="agent" src="images/agents/astra.png">
+        </div>
+        <div class="weapon-container" onclick="randomWeapon('all')">
+            <img class="weapon" src="images/weapons/ares.png">
+        </div>
+        <div class="strat-container" onclick="randomStrat()">
+            <h1 class="strat_title">Strat Name</h1>
+            <p class="strat_desc">Strat Description</p>
+        </div>
+        <div class="instructions-container">
+            <h1>Instructions</h1>
+            <p>'1' - Random Agent<br>'2' - Random Weapon (All)<br>'3' - Random Weapon (Primary)<br>'4' - Random Weapon (Secondary)<br>'5' - Random Strat</p>
+            <button onclick="window.location.href = '../index.html'">Back to Home</button>
+        </div>
+        <div class="credits-container">
+            <h1>Credits</h1>
+            <p>Credit for all of the images goes to <a target="_blank" href="https://www.riotgames.com/en">Riot Games</a> and <a target="_blank" href="https://playvalorant.com/en-us/">VALORANT</a>. Credit for the random strats and descriptions belongs to <a target="_blank" href="https://www.reddit.com/user/Kearnerr/">u/Kearnerr</a> and his Reddit post <a target="_blank" href="https://www.reddit.com/r/VALORANT/comments/k8rebf/unofficial_guide_to_the_pick_my_strat_spray/">here</a></p>
+        </div>
+    </section>
+
+    <script>
+        var agents = ["astra", "breach", "brimstone", "chamber", "cypher", "jett", "kayo", "killjoy", "neon", "omen", "phoenix", "raze", "reyna", "sage", "skye", "sova", "viper", "yoru"];
+        var weapons = ["Ares", "Bucky", "Bulldog", "Guardian", "Judge", "Marshal", "Odin", "Operator", "Phantom", "Spectre", "Stinger", "Vandal", "Classic", "Shorty", "Frenzy", "Ghost", "Sheriff", "Knife"];
+        var strats = [
+                   {name: "A Site", desc:"You go to A site. Pretty straight forward."},
+                   {name: "B Site", desc:"You go to B site. Thank you for coming to my TED Talk."},
+                   {name: "C Site", desc:"You go to C site. If you're not playing Haven, go Mid or the equivalent. If it's Bind have fun in Market."},
+                   {name: "Full Buy", desc:"No matter what it is, full buy. Use all of the credits you can. If using with random weapon, you have to buy full shields."},
+                   {name: "Light Buy", desc:"Small shield and whatever you feel like buying, so long as you can afford to buy something the next round."},
+                   {name: "Full Save", desc:"I don't care that the enemy team has 5 ops, and neither does the randomizer. You dont get a shield or a gun. Classic OP. This overrides weapon pick."},
+                   {name: "Watch Angles", desc:"Whether you're attacking or defending, sit back and enjoy the show. You can watch the flank or sit and watch any angle the whole round. Have fun."},
+                   {name: "Rush", desc:"Full rush. Go ham. They won't expect it this time, trust. Ideally used in conjunction with a site roll. If rolled alone, rush site of choice."},
+                   {name: "Play Contact", desc:"Sneak towars the site of your choice. No utilities until you make contack with anyone from the other team, then rush."},
+                   {name: "Play for Picks", desc:"Try and get a pick. Once you do, play off of it and move into that position."},
+                   {name: "Execute", desc:"Pick a site and execute it default. Smoke it up and plant the bomb where you usually do."},
+                   {name: "W Key", desc:"Don't stop. Not quite the same as rushing -  you keep and keep trying to find kills; don't let go of the W key even if the site is free."},
+                   {name: "Help a Teammate", desc:"You've got two choices here: stack a teammate or follow them around and help them no matter what."},
+                   {name: "Opposite Day", desc:"Do the opposite of whatever the rest of your team is doing."},
+                   {name: "Guess I'll Die", desc:"Die. That's all. If you don't condone throwing or are not five stacking, try and get as many kills as possible. Hunt them down."}
+                 ];
+
+        function loadFunction() {
+            randomAgent();
+            randomWeapon("all");
+            randomStrat();
+        }
+
+        function randomAgent() {
+            let agentClass = $(".agent");
+            let random = randomNumber(18);
+
+            let agentImage = "images/agents/" + agents[random] + ".png";
+
+            agentClass.fadeOut('500', 'swing', function () {
+                agentClass.attr('src', agentImage);
+                agentClass.fadeIn('500', 'swing');
+            });
+        }
+
+        function randomWeapon(list) {
+            let weaponClass = $(".weapon");
+            let random = 0;
+
+            if (list == "all") {
+                random = randomNumber(18);
+            } else if (list == "primary") {
+                random = randomNumber(11);
+            } else if (list == "secondary") {
+                random = randomNumber(6) + 12;
+            }
+
+            let weaponImage = "images/weapons/" + weapons[random] + ".png";
+
+            weaponClass.fadeOut('500', 'swing', function () {
+                weaponClass.attr('src', weaponImage);
+                weaponClass.fadeIn('500', 'swing');
+            });
+        }
+
+        function randomStrat() {
+            let random = randomNumber(15);
+            let strat = strats[random];
+            
+            let stratTitle = $(".strat_title");
+            let stratDesc = $(".strat_desc");
+
+            stratTitle.fadeOut('500', 'swing', function () {
+                stratTitle.html(strat.name.toUpperCase());
+                stratTitle.fadeIn('500', 'swing');
+            });
+
+            stratDesc.fadeOut('500', 'swing', function () {
+                stratDesc.html(strat.desc);
+                stratDesc.fadeIn('500', 'swing');
+            });
+        }
+
+        $("body").keypress(function(event) {
+			var code = event.charCode;
+            if (code == 49) {
+                // Agent
+                randomAgent();
+            } else if (code == 50) {
+                // Weapon All
+                randomWeapon("all");
+            } else if (code == 51) {
+                // Weapon Primary
+                randomWeapon("primary");
+            } else if (code == 52) {
+                // Weapon Secondary
+                randomWeapon("secondary");
+            } else if (code == 53) {
+                // Round Style
+                randomStrat();
+            }
+		});
+
+        function randomNumber(max) {
+            return Math.floor(Math.random() * max);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+// Variables
+
+$nav-bg: #000D18;
+$nav-hover: rgba(255,255,255,0.12);
+
+@mixin noDrag {
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+// Fonts
+
+@font-face {
+    font-family: "Fira Code";
+    src: url(../fonts/FiraCode-Light.ttf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Fira Code";
+    src: url(../fonts/FiraCode-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Fira Code";
+    src: url(../fonts/FiraCode-Medium.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Fira Code";
+    src: url(../fonts/FiraCode-SemiBold.ttf);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Fira Code";
+    src: url(../fonts/FiraCode-Bold.ttf);
+    font-weight: 700;
+}
+
+// HTML Page Formating
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: $nav-bg;
+    overflow-x: hidden;
+    width: 100vw;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+//Navbar Styles
+
+nav {
+    background-color: $nav-bg;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+
+    button {
+        float: left;
+        display: none !important;
+        
+        .hamburger-inner {
+            background-color: white !important;
+
+            &::before, &::after {
+                background-color: white !important;
+            }
+        }
+    }
+
+    img {
+        height: 60px;
+        float: left;
+        margin: 7px 10px;
+        @include noDrag;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+        
+        li {
+            float: left;
+            height: 100%;
+            font-size: 16px;
+            line-height: 20px;
+            display: inherit;
+
+            a {
+                display: block;
+                text-align: center;
+                padding: 20px 16px;
+                text-decoration: none;
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+                transition: background-color 0.35s, color 0.35s;
+
+                &:hover {
+                    background-color: $nav-hover;
+                }
+
+                &:hover, &:active {
+                    &.youtube{
+                        color: #F10002 !important;
+                    }
+
+                    &.twitch{
+                        color: #8A43F2 !important;
+                    }
+
+                    &.twitter{
+                        color: #1C99E6 !important;
+                    }
+
+                    &.github{
+                        color: #aaa !important;
+                    }
+
+                    &.coffee{
+                        color: #F2D200 !important;
+                    }
+                }
+            }
+
+            &.right {
+                float: right;
+            }
+        }
+
+        &.mobile {
+            display: inherit !important;
+            animation: anim .3s ease-in-out;
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    nav {
+        button, img, ul li.right, ul li {
+            float: none;
+        }
+        img {
+            position: relative;
+            margin: 0px;
+            top: 8px;
+            @include noDrag;
+        }
+        button {
+            display: inline-block !important;
+            position: relative;
+            top: -8px;
+        }
+    }
+    li.right {
+        width: 15vw;
+        display: inline-block;
+        margin: 0px 2.1vw;
+    }
+    ul {
+        display: none !important;
+    }
+    section {
+        div {
+            img.pfp {
+                width: 40vw;
+            }
+        }
+    }
+}
+
+@keyframes anim {
+    0% {
+      display: none;
+      opacity: 0;
+    }
+    1% {
+      display: block;
+      opacity: 0;
+      transform: scale(0);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+}
+
+// Section Styles
+
+section {
+    width: 100vw;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 0px;
+    height: fit-content;
+    color: white;
+
+    &.landing {
+        background-color: #00386a;
+    }
+
+    &.stuff {
+        background-color: #003260;
+    }
+
+    &.valorant {
+        background-color: #002d56;
+    }
+
+    &.wordle {
+        background-color: #00284c;
+    }
+
+    &.soon {
+        background-color: #002343;
+    }
+
+    &.support {
+        background-color: #001e39;
+    }
+
+    h1 {
+        padding: 0px;
+        margin: 0px;
+        font-family: "Fira Code";
+    }
+
+    p {
+        font-family: "Fira Code";
+        font-weight: 300;
+
+        a {
+            color: #A0A0A0 !important;
+    
+            &:hover {
+                color: #7B99A9 !important;
+            }
+    
+            &:active {
+                color: #5E92AE !important;
+            }
+    
+            &:visited {
+                color: #A0A0A0;
+            }
+        }
+    }
+
+    div {
+        display: inline-block;
+    }
+
+    div.left {
+        padding: 2vw;
+        width: 76vw;
+    }
+
+    div.right {
+        padding: 1vw;
+    }
+
+    .pfp {
+        width: 20vw;
+    }
+
+    .val_img {
+        width: 15vw;
+    }
+
+    .wordle_img {
+        width: 15vw;
+        position: relative;
+        top: 20px;
+    }
+
+    i, svg {
+        color: white;
+        margin: 0px 20px;
+        @include noDrag;
+    }
+
+    button {
+        background-color: rgba(255,255,255,0.08);
+        border: none;
+        border-radius: 20px;
+        padding: 12px 20px;
+        color: #ddd;
+        box-sizing: border-box;
+        margin: 8px 0px;
+        font-family: 'Fira Code';
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.25s;
+
+        &:hover {
+            background-color: rgba(255,255,255,0.15);
+        }
+
+        &.right {
+            float: right;
+        }
+    }
+
+    img {
+        color: white;
+        @include noDrag;
+    }
+}
+
+// Footer Styles
+
+footer {
+    width: 100vw;
+    height: 90px;
+    background-color: $nav-bg;
+    margin: 0px;
+    padding: 0px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0px;
+    color: white;
+    font-family: 'Fira Code';
+    font-size: 0.75em;
+
+    div {
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        img {
+            height: 70px;
+            margin-left: 15px;
+            @include noDrag;
+        }
+
+        &:last-child {
+            justify-content: center !important;
+        }
+
+        &:first-child {
+            grid-column: 1 / 3; 
+            grid-row: 1 / 2;
+        }
+
+        p {
+            margin-left: 20px;
+        }
+
+        a {
+            color: #A0A0A0 !important;
+    
+            &:hover {
+                color: #7B99A9 !important;
+            }
+    
+            &:active {
+                color: #5E92AE !important;
+            }
+    
+            &:visited {
+                color: #A0A0A0;
+            }
+        }
+
+        div {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 0px;
+            text-align: center;
+            line-height: 40px;
+
+            a {
+                padding: 5px;
+                transition: color 0.25s;
+
+                &:hover, &:active {
+                    &.youtube{
+                        color: #F10002 !important;
+                    }
+
+                    &.twitch{
+                        color: #8A43F2 !important;
+                    }
+
+                    &.twitter{
+                        color: #1C99E6 !important;
+                    }
+
+                    &.github{
+                        color: #ddd !important;
+                    }
+
+                    &.coffee{
+                        color: #F2D200 !important;
+                    }
+                }
+            }
+
+            p {
+                font-weight: 600;
+                font-size: 1.2em;
+                text-align: center;
+                margin: 5px 0px 0px 5px;
+            }
+
+            .links {
+                display: inline;
+                margin-right: 10px;
+            }
+        }
+    }
+}

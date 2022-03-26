@@ -1,0 +1,154 @@
+@font-face {
+  font-family: "Tungsten";
+  src: url("../fonts/Tungsten-Bold.ttf");
+}
+@font-face {
+  font-family: "Mark Pro";
+  src: url("../fonts/Mark-Pro.woff2");
+}
+body {
+  margin: 0px;
+  width: 100vw;
+  background-image: url("../images/agent-background.png");
+  background-repeat: repeat;
+  user-select: none;
+  /* supported by Chrome and Opera */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+button {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: none;
+  border-radius: 20px;
+  padding: 12px 20px;
+  color: #ddd;
+  box-sizing: border-box;
+  margin: 0px 15px 10px;
+  font-family: "Mark Pro";
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.25s;
+}
+button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+button.mobile-button {
+  display: none;
+  margin: 10px auto;
+  width: 80vw;
+}
+
+section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+  padding: 0px;
+  margin: 10px auto;
+  width: 1360px;
+  height: fit-content;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+section div {
+  background-color: rgba(0, 0, 0, 0.4);
+  height: fit-content;
+  border: 3px solid #fa4454;
+  border-radius: 15px;
+}
+section div img {
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+section div.agent-container {
+  grid-column: 1/2;
+  grid-row: 1/5;
+}
+section div.agent-container img {
+  display: block;
+  margin: 0px auto;
+  width: auto;
+  height: 100%;
+}
+section div:not(.agent-container):not(.weapon-container) h1 {
+  color: white;
+  font-family: "Tungsten";
+  text-transform: uppercase;
+  font-size: 64px;
+  margin: 0px;
+  position: relative;
+  padding: 0px 15px;
+}
+section div:not(.agent-container):not(.weapon-container) p {
+  color: white;
+  font-family: "Mark Pro";
+  font-size: 20px;
+  position: relative;
+  font-weight: 100;
+  padding: 0px 15px;
+  margin: 10px 0px;
+}
+section div a {
+  color: #fa4454;
+}
+section div a:hover {
+  color: #fd8993;
+}
+
+@media screen and (max-width: 1360px) {
+  section {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 10px auto;
+    width: 100vw;
+  }
+  section div {
+    width: fit-content;
+    height: fit-content;
+    margin: 0px auto;
+  }
+  section div:not(.agent-container):not(.weapon-container) {
+    width: 80vw;
+  }
+}
+@media screen and (max-width: 750px) {
+  section {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
+    margin: 0px;
+  }
+  section div {
+    border-radius: 0px;
+    width: 99vw !important;
+  }
+  section div img {
+    width: 100vw !important;
+    height: auto !important;
+  }
+  section div.instructions-container {
+    display: none;
+  }
+
+  .mobile-button {
+    display: block !important;
+  }
+}
+
+/*# sourceMappingURL=valorant.css.map */

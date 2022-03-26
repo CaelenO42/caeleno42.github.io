@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<title>CaelenO42 | &lt;wordle\&gt;</title>
+<link rel="stylesheet" type="text/css" href="wordle.css">
+</head>
+<body>
+<div class="top_bar">
+    <input name="input" placeholder="__ane" class="input" maxlength="5">
+    <input name="yellows" placeholder="yellow letters" class="yellow" maxlength="5">
+    <input name="grays" placeholder="gray letters" class="gray">
+    <button onClick="resetFunction();">Reset All Fields</button>
+    <button onClick="window.location.href='../index.html'">Back to Home</button>
+</div>
+<div class="words">
+    <p class = "possible"></p>
+</div>
+<script>
+    var masterWords = [];
+    var wordsTemp = [];
+    
+    $.getJSON('json/possibleAnswers.json', function(data) {
+        data.sort();
+        masterWords = data;
+        wordsTemp = masterWords;
+        printWords();
+    });
+    
+    var input = [];
+    var yellow = [];
+    var gray = [];
+    
+    $('.input').on('input',function(e){
+        let value = $(this).val();
+        value = value.split("");
+        input = value;
+        
+        searchFunction("input");
+    });
+    $('.yellow').on('input',function(e){
+        let value = $(this).val();
+        value = value.split("");
+        yellow = value;
+        
+        searchFunction("yellow");
+    });
+    $('.gray').on('input',function(e){
+        let value = $(this).val();
+        value = value.split("");
+        gray = value;
+        
+        searchFunction("gray");
+    });
+    
+    function searchFunction(type) {
+        let searchArray = [];
+        if (type == "input") {
+            if (input.length == 0) {
+                wordsTemp = masterWords;
+                printWords();
+                return;
+            }
+            for (var i = 0; i < input.length; i ++) {
+                searchArray = [];
+                if (input[i] != "_") {
+                    if (i == 0) {
+                        for (var k = 0; k < masterWords.length; k++) {
+                            if (masterWords[k].charAt(i) == input[i]) {
+                                searchArray.push(masterWords[k]);
+                            }
+                            wordsTemp = searchArray;
+                        }
+                    } else {
+                        for (var k = 0; k < wordsTemp.length; k++) {
+                            if (wordsTemp[k].charAt(i) == input[i]) {
+                                searchArray.push(wordsTemp[k]);
+                            }
+                        }
+                        wordsTemp = searchArray;
+                    }
+                } else {
+                    searchArray = wordsTemp;
+                }
+            }
+            wordsTemp = searchArray;
+            printWords();
+        } else if (type == "gray") {
+            if (gray.length == 0) {
+                searchFunction("input");
+                return;
+            }
+            for (var i = 0; i < gray.length; i++) {
+                //Every Letter in gray
+                searchArray = [];
+                for (var k = 0; k < wordsTemp.length; k++) {
+                    // Every Word in wordsTemp
+                    let word = wordsTemp[k].split("");
+                    let count = 0;
+                    
+                    for (var j = 0; j < word.length; j++) {
+                        //every letter in word
+                        if (word[j] == gray[i]) {
+                            count++;
+                        }
+                    }
+                    if (count == 0) {
+                        searchArray.push(wordsTemp[k]);
+                    }
+                }
+            }
+            wordsTemp = searchArray;
+            printWords();
+        } else if (type == "yellow") {
+            if (yellow.length == 0) {
+                searchFunction("input");
+                return;
+            }
+            for (var i = 0; i < yellow.length; i++) {
+                //Every Letter in yellow
+                searchArray = [];
+                for (var k = 0; k < wordsTemp.length; k++) {
+                    // Every Word in wordsTemp
+                    let word = wordsTemp[k].split("");
+                    let count = 0;
+                    
+                    for (var j = 0; j < word.length; j++) {
+                        //every letter in word
+                        if (word[j] == yellow[i]) {
+                            count++;
+                        }
+                    }
+                    if (count > 0) {
+                        searchArray.push(wordsTemp[k]);
+                    }
+                }
+            }
+            wordsTemp = searchArray;
+            printWords();
+        }
+    }
+    
+    function printWords() {
+        let possibleWords = "";
+//        for (var i = 0; i < wordsTemp.length; i++) {
+//            if (i == (wordsTemp.length - 1)) {
+//                possibleWords += wordsTemp[i];
+//            } else {
+//                possibleWords += wordsTemp[i] + ", ";
+//            }
+//        }   
+        possibleWords = wordsTemp.join(", ")
+        $(".possible").html(possibleWords);
+    }
+    
+    function resetFunction() {
+        $(".input").val('');
+        $(".yellow").val('');
+        $(".gray").val('');
+        
+        input = [];
+        yellow = [];
+        gray = [];
+        
+        searchFunction("input");
+    }
+  </script>
+</body>
+</html>
