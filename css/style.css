@@ -117,7 +117,10 @@ nav ul.mobile {
 }
 
 @media screen and (max-width: 600px) {
-  nav button, nav img, nav ul li.right, nav ul li {
+  nav button,
+nav img,
+nav ul li.right,
+nav ul li {
     float: none;
   }
   nav img {
@@ -237,7 +240,8 @@ section .wordle_img {
   position: relative;
   top: 20px;
 }
-section i, section svg {
+section i,
+section svg {
   color: white;
   margin: 0px 20px;
   user-drag: none;
@@ -362,6 +366,123 @@ footer div div p {
 footer div div .links {
   display: inline;
   margin-right: 10px;
+}
+
+.discord {
+  background-color: #001e39;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  /* supported by Chrome and Opera */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+}
+.discord div.tiles {
+  width: 80vh;
+  height: 80vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.discord div.tiles .tile {
+  width: 24vh;
+  height: 24vh;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease;
+  flex-wrap: wrap;
+  flex-direction: column;
+  border-radius: 2px;
+  box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.9);
+}
+.discord div.tiles .tile img {
+  width: 24vh;
+  height: auto;
+  border-radius: 2px;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+.discord div.tiles .tile a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.discord div.tiles .tile svg {
+  font-size: 12vh;
+  margin: 0px;
+  padding: 0px;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.25s ease;
+}
+.discord div.tiles .tile h1 {
+  margin: 0px;
+  padding: 0px;
+  font-size: 4vh;
+  font-family: "Fira Code";
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.25s ease;
+}
+.discord div.tiles .tile p {
+  margin: 2px;
+  padding: 0px;
+  font-family: "Fira Code";
+  font-size: 1.65vh;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.25s ease;
+  text-align: center;
+}
+.discord div.tiles .tile:hover {
+  transform: scale(1.05);
+}
+.discord div.tiles .tile:hover svg {
+  color: white;
+}
+.discord div.tiles .tile:hover h1 {
+  color: white;
+}
+.discord div.tiles .tile:hover p {
+  color: rgba(255, 255, 255, 0.9);
+}
+.discord div.tiles .tile.pro {
+  background-color: #26A28D;
+}
+.discord div.tiles .tile.time {
+  background-color: #5E92AE;
+}
+.discord div.tiles .tile.th {
+  background-color: #9146FF;
+}
+.discord div.tiles .tile.yt {
+  background-color: red;
+}
+.discord div.tiles .tile.tr {
+  background-color: #1DA1F2;
+}
+.discord div.tiles .tile.st {
+  background: #091b3f;
+  background: linear-gradient(180deg, #091b3f 0%, #1388b9 100%);
+}
+.discord div.tiles .tile.ws {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+.discord div.tiles .tile.gh {
+  background-color: black;
 }
 
 /*# sourceMappingURL=style.css.map */
