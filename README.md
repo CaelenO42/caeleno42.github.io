@@ -1,4 +1,4 @@
-<h1 align="center">CaelenO42.GitHub.io</h1>
+<h1 align="center">caeleno42.github.io</h1>
 
 <p align="center">
   <img src="https://img.shields.io/github/repo-size/CaelenO42/dark-mode" />
