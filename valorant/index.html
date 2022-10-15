@@ -1,136 +1,245 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<title>CaelenO42 | &lt;valorant\&gt;</title>
-<link rel="icon" href="../images/favicon.png">
-<link rel="stylesheet" type="text/css" href="css/valorant.css">
-</head>
-<body onload="loadFunction()">
-    <button onclick="window.location.href = '../index.html'" class="mobile-button">Back to Home</button>
-    <section>
-        <div class="agent-container" onclick="randomAgent()">
-            <img class="agent" src="images/agents/astra.png">
-        </div>
-        <div class="weapon-container" onclick="randomWeapon('all')">
-            <img class="weapon" src="images/weapons/ares.png">
-        </div>
-        <div class="strat-container" onclick="randomStrat()">
-            <h1 class="strat_title">Strat Name</h1>
-            <p class="strat_desc">Strat Description</p>
-        </div>
-        <div class="instructions-container">
-            <h1>Instructions</h1>
-            <p>'1' - Random Agent<br>'2' - Random Weapon (All)<br>'3' - Random Weapon (Primary)<br>'4' - Random Weapon (Secondary)<br>'5' - Random Strat</p>
-            <button onclick="window.location.href = '../index.html'">Back to Home</button>
-        </div>
-        <div class="credits-container">
-            <h1>Credits</h1>
-            <p>Credit for all of the images goes to <a target="_blank" href="https://www.riotgames.com/en">Riot Games</a> and <a target="_blank" href="https://playvalorant.com/en-us/">VALORANT</a>. Credit for the random strats and descriptions belongs to <a target="_blank" href="https://www.reddit.com/user/Kearnerr/">u/Kearnerr</a> and his Reddit post <a target="_blank" href="https://www.reddit.com/r/VALORANT/comments/k8rebf/unofficial_guide_to_the_pick_my_strat_spray/">here</a></p>
-        </div>
-    </section>
+   <head>
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <title>CaelenO42 | &lt;valorant\&gt;</title>
+      <link rel="icon" href="../images/favicon.png" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" type="text/css" href="css/valorant.css" />
+   </head>
+   <body>
+      <div class="background brimstone"></div>
+      <div class="background phoenix"></div>
+      <div class="background sage"></div>
+      <div class="background sova"></div>
+      <div class="background viper"></div>
+      <div class="background cypher"></div>
+      <div class="background reyna"></div>
+      <div class="background killjoy"></div>
+      <div class="background breach"></div>
+      <div class="background omen"></div>
+      <div class="background jett"></div>
+      <div class="background raze"></div>
+      <div class="background skye"></div>
+      <div class="background yoru"></div>
+      <div class="background astra"></div>
+      <div class="background kayo"></div>
+      <div class="background chamber"></div>
+      <div class="background neon"></div>
+      <div class="background fade"></div>
+      <div class="background harbor"></div>
+      <section class="content">
+         <section class="agent">
+            <img class="char_img" />
+         </section>
+         <section class="agent_info_mobile">
+            <div>
+               <p class="agent_name"></p>
+               <p class="agent_type"></p>
+            </div>
+         </section>
+         <section class="weapon">
+            <div>
+               <img class="weapon_img" />
+               <span class="weapon_name"></span>
+            </div>
+         </section>
+         <section class="strat">
+            <div>
+               <span class="strat_title"></span>
+               <span class="strat_desc"></span>
+            </div>
+         </section>
+         <section class="info">
+            <div>
+               <h1>Instructions</h1>
+               <p>Click the boxes or use keyboard keys to randomize different settings:</p>
+               <p>'1' - Random Agent<br />'2' - Random Weapon (All)<br />'3' - Random Weapon (Primary)<br />'4' - Random Weapon (Secondary)<br />'5' - Random Strat</p>
+               <button onclick="window.location.href = '../index.html'">Back to Home</button>
+            </div>
+         </section>
+         <section class="agent_info">
+            <div>
+               <p class="agent_name"></p>
+               <p class="agent_type"></p>
+            </div>
+         </section>
+         <section class="credits">
+            <div>
+               <h1>Credits</h1>
+               <p>Credit for all of the images goes to <a target="_blank" href="https://www.riotgames.com/en">Riot Games</a> and <a target="_blank" href="https://playvalorant.com/en-us/">VALORANT</a>.</p>
+               <p>
+                  Credit for the random strats and descriptions belongs to <a target="_blank" href="https://www.reddit.com/user/Kearnerr/">u/Kearnerr</a> and his Reddit post
+                  <a target="_blank" href="https://www.reddit.com/r/VALORANT/comments/k8rebf/unofficial_guide_to_the_pick_my_strat_spray/">here</a>
+               </p>
+            </div>
+         </section>
+      </section>
+      <script>
+         setTimeout(function () {
+            $(".background").css("height", $(document).height() + "px");
+         }, 500);
 
-    <script>
-        var agents = ["astra", "breach", "brimstone", "chamber", "cypher", "fade", "jett", "kayo", "killjoy", "neon", "omen", "phoenix", "raze", "reyna", "sage", "skye", "sova", "viper", "yoru"];
-        var weapons = ["ares", "bucky", "bulldog", "guardian", "judge", "marshal", "odin", "operator", "phantom", "spectre", "stinger", "vandal", "classic", "shorty", "frenzy", "ghost", "sheriff", "knife"];
-        var strats = [
-                   {name: "A Site", desc:"You go to A site. Pretty straight forward."},
-                   {name: "B Site", desc:"You go to B site. Thank you for coming to my TED Talk."},
-                   {name: "C Site", desc:"You go to C site. If you're not playing Haven, go Mid or the equivalent. If it's Bind have fun in Market."},
-                   {name: "Full Buy", desc:"No matter what it is, full buy. Use all of the credits you can. If using with random weapon, you have to buy full shields."},
-                   {name: "Light Buy", desc:"Small shield and whatever you feel like buying, so long as you can afford to buy something the next round."},
-                   {name: "Full Save", desc:"I don't care that the enemy team has 5 ops, and neither does the randomizer. You dont get a shield or a gun. Classic OP. This overrides weapon pick."},
-                   {name: "Watch Angles", desc:"Whether you're attacking or defending, sit back and enjoy the show. You can watch the flank or sit and watch any angle the whole round. Have fun."},
-                   {name: "Rush", desc:"Full rush. Go ham. They won't expect it this time, trust. Ideally used in conjunction with a site roll. If rolled alone, rush site of choice."},
-                   {name: "Play Contact", desc:"Sneak towars the site of your choice. No utilities until you make contack with anyone from the other team, then rush."},
-                   {name: "Play for Picks", desc:"Try and get a pick. Once you do, play off of it and move into that position."},
-                   {name: "Execute", desc:"Pick a site and execute it default. Smoke it up and plant the bomb where you usually do."},
-                   {name: "W Key", desc:"Don't stop. Not quite the same as rushing -  you keep and keep trying to find kills; don't let go of the W key even if the site is free."},
-                   {name: "Help a Teammate", desc:"You've got two choices here: stack a teammate or follow them around and help them no matter what."},
-                   {name: "Opposite Day", desc:"Do the opposite of whatever the rest of your team is doing."},
-                   {name: "Guess I'll Die", desc:"Die. That's all. If you don't condone throwing or are not five stacking, try and get as many kills as possible. Hunt them down."}
-                 ];
+         var agentData = [
+            { name: "Brimstone", number: "01", type: "Controller" },
+            { name: "Phoenix", number: "02", type: "Duelist" },
+            { name: "Sage", number: "03", type: "Sentinel" },
+            { name: "Sova", number: "04", type: "Sentinel" },
+            { name: "Viper", number: "05", type: "Controller" },
+            { name: "Cypher", number: "06", type: "Sentinel" },
+            { name: "Reyna", number: "07", type: "Duelist" },
+            { name: "Killjoy", number: "09", type: "Sentinel" },
+            { name: "Breach", number: "09", type: "Initiator" },
+            { name: "Omen", number: "10", type: "Controller" },
+            { name: "Jett", number: "11", type: "Duelist" },
+            { name: "Raze", number: "12", type: "Duelist" },
+            { name: "Skye", number: "13", type: "Initiator" },
+            { name: "Yoru", number: "14", type: "Duelist" },
+            { name: "Astra", number: "15", type: "Controller" },
+            { name: "Kayo", number: "16", type: "Initiator" },
+            { name: "Chamber", number: "17", type: "Sentinel" },
+            { name: "Neon", number: "18", type: "Duelist" },
+            { name: "Fade", number: "19", type: "Initiator" },
+            { name: "Harbor", number: "20", type: "Controller" },
+         ];
+         var weaponData = ["ares", "bucky", "bulldog", "guardian", "judge", "marshal", "odin", "operator", "phantom", "spectre", "stinger", "vandal", "classic", "shorty", "frenzy", "ghost", "sheriff", "knife"];
+         var stratData = [
+            { name: "A Site", desc: "You go to A site. Pretty straight forward." },
+            { name: "B Site", desc: "You go to B site. Thank you for coming to my TED Talk." },
+            { name: "C Site", desc: "You go to C site. If you're not playing Haven, go Mid or the equivalent. If it's Bind have fun in Market." },
+            { name: "Full Buy", desc: "No matter what it is, full buy. Use all of the credits you can. If using with random weapon, you have to buy full shields." },
+            { name: "Light Buy", desc: "Small shield and whatever you feel like buying, so long as you can afford to buy something the next round." },
+            { name: "Full Save", desc: "I don't care that the enemy team has 5 ops, and neither does the randomizer. You dont get a shield or a gun. Classic OP. This overrides weapon pick." },
+            { name: "Watch Angles", desc: "Whether you're attacking or defending, sit back and enjoy the show. You can watch the flank or sit and watch any angle the whole round. Have fun." },
+            { name: "Rush", desc: "Full rush. Go ham. They won't expect it this time, trust. Ideally used in conjunction with a site roll. If rolled alone, rush site of choice." },
+            { name: "Play Contact", desc: "Sneak towars the site of your choice. No utilities until you make contack with anyone from the other team, then rush." },
+            { name: "Play for Picks", desc: "Try and get a pick. Once you do, play off of it and move into that position." },
+            { name: "Execute", desc: "Pick a site and execute it default. Smoke it up and plant the bomb where you usually do." },
+            { name: "W Key", desc: "Don't stop. Not quite the same as rushing -  you keep and keep trying to find kills; don't let go of the W key even if the site is free." },
+            { name: "Help a Teammate", desc: "You've got two choices here: stack a teammate or follow them around and help them no matter what." },
+            { name: "Opposite Day", desc: "Do the opposite of whatever the rest of your team is doing." },
+            { name: "Guess I'll Die", desc: "Die. That's all. If you don't condone throwing or are not five stacking, try and get as many kills as possible. Hunt them down." },
+         ];
 
-        function loadFunction() {
-            randomAgent();
-            randomWeapon("all");
-            randomStrat();
-        }
+         $(".agent").click(function () {
+            agentFunction();
+         });
 
-        function randomAgent() {
-            let agentClass = $(".agent");
-            let random = randomNumber(19);
+         $(".weapon").click(function () {
+            weaponFunction("all");
+         });
 
-            let agentImage = "images/agents/" + agents[random] + ".png";
+         $(".strat").click(function () {
+            stratFunction();
+         });
 
-            agentClass.fadeOut('500', 'swing', function () {
-                agentClass.attr('src', agentImage);
-                agentClass.fadeIn('500', 'swing');
+         agentFunction();
+         weaponFunction("all");
+         stratFunction();
+
+         $("body").keypress(function (event) {
+            var code = event.charCode;
+            if (code == 49) {
+               // Agent
+               agentFunction();
+            } else if (code == 50) {
+               // Weapon All
+               weaponFunction("all");
+            } else if (code == 51) {
+               // Weapon Primary
+               weaponFunction("primary");
+            } else if (code == 52) {
+               // Weapon Secondary
+               weaponFunction("secondary");
+            } else if (code == 53) {
+               // Round Style
+               stratFunction();
+            }
+         });
+
+         function agentFunction() {
+            let num = randomNumber(agentData.length);
+
+            let agent = agentData[num];
+            let agentClass = $(".char_img");
+            let agentImage = `./images/agents/${agent.name.toLowerCase()}.png`;
+
+            agentClass.fadeOut("500", "swing", function () {
+               agentClass.attr("src", agentImage);
+               agentClass.fadeIn("500", "swing");
             });
-        }
 
-        function randomWeapon(list) {
-            let weaponClass = $(".weapon");
-            let random = 0;
+            let agentNameClass = $(".agent_name");
+            let agentTypeClass = $(".agent_type");
 
-            if (list == "all") {
-                random = randomNumber(18);
-            } else if (list == "primary") {
-                random = randomNumber(11);
-            } else if (list == "secondary") {
-                random = randomNumber(6) + 12;
+            agentNameClass.fadeOut("500", "swing", function () {
+               agentNameClass.html(agent.name.toUpperCase());
+               agentNameClass.fadeIn("500", "swing");
+            });
+            agentTypeClass.fadeOut("500", "swing", function () {
+               agentTypeClass.html(agent.type.toLowerCase());
+               agentTypeClass.fadeIn("500", "swing");
+            });
+
+            $(".name").html(agent.name);
+            $(".number").html(agent.number);
+            $(".type").html(agent.type);
+
+            $(".brimstone, .phoenix, .sage, .sova, .viper, .cypher, .reyna, .killjoy, .breach, .omen, .jett, .raze, .skye, .yoru, .astra, .kayo, .chamber, .neon, .fade, .harbor").css("opacity", 0);
+            $(`.${agent.name.toLowerCase()}`).css("opacity", 1);
+         }
+
+         function weaponFunction(type) {
+            let num = 0;
+            if (type == "all") {
+               num = randomNumber(18);
+            } else if (type == "primary") {
+               num = randomNumber(11);
+            } else if (type == "secondary") {
+               num = randomNumber(6) + 12;
             }
 
-            let weaponImage = "images/weapons/" + weapons[random] + ".png";
+            let weapon = weaponData[num];
+            let weaponClass = $(".weapon_img");
+            let weaponImage = `./images/weapons/${weapon.toLowerCase()}.png`;
 
-            weaponClass.fadeOut('500', 'swing', function () {
-                weaponClass.attr('src', weaponImage);
-                weaponClass.fadeIn('500', 'swing');
+            weaponClass.fadeOut("500", "swing", function () {
+               weaponClass.attr("src", weaponImage);
+               weaponClass.fadeIn("500", "swing");
             });
-        }
 
-        function randomStrat() {
-            let random = randomNumber(15);
-            let strat = strats[random];
-            
+            let weaponName = $(".weapon_name");
+
+            weaponName.fadeOut("500", "swing", function () {
+               weaponName.html(weapon.toUpperCase());
+               weaponName.fadeIn("500", "swing");
+            });
+         }
+
+         function stratFunction() {
+            let num = randomNumber(stratData.length);
+
+            let strat = stratData[num];
             let stratTitle = $(".strat_title");
             let stratDesc = $(".strat_desc");
 
-            stratTitle.fadeOut('500', 'swing', function () {
-                stratTitle.html(strat.name.toUpperCase());
-                stratTitle.fadeIn('500', 'swing');
+            stratTitle.fadeOut("500", "swing", function () {
+               stratTitle.html(strat.name.toUpperCase());
+               stratTitle.fadeIn("500", "swing");
             });
 
-            stratDesc.fadeOut('500', 'swing', function () {
-                stratDesc.html(strat.desc);
-                stratDesc.fadeIn('500', 'swing');
+            stratDesc.fadeOut("500", "swing", function () {
+               stratDesc.html(strat.desc);
+               stratDesc.fadeIn("500", "swing");
             });
-        }
+         }
 
-        $("body").keypress(function(event) {
-			var code = event.charCode;
-            if (code == 49) {
-                // Agent
-                randomAgent();
-            } else if (code == 50) {
-                // Weapon All
-                randomWeapon("all");
-            } else if (code == 51) {
-                // Weapon Primary
-                randomWeapon("primary");
-            } else if (code == 52) {
-                // Weapon Secondary
-                randomWeapon("secondary");
-            } else if (code == 53) {
-                // Round Style
-                randomStrat();
-            }
-		});
-
-        function randomNumber(max) {
+         function randomNumber(max) {
             return Math.floor(Math.random() * max);
-        }
-    </script>
-</body>
+         }
+      </script>
+   </body>
 </html>

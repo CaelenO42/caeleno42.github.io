@@ -1,174 +1,406 @@
 @font-face {
-    font-family: "Tungsten";
-    src: url("../fonts/Tungsten-Bold.ttf");
+   font-family: "Tungsten";
+   src: url("../fonts/Tungsten-Bold.ttf");
 }
 
 @font-face {
-    font-family: "Mark Pro";
-    src: url("../fonts/Mark-Pro.woff2");
+   font-family: "Mark Pro";
+   src: url("../fonts/Mark-Pro.woff2");
+}
+
+@mixin QuadVertexColors($v0, $v1, $v2, $v3) {
+   background: linear-gradient(to bottom, $v0, $v2);
+
+   &::after {
+      content: "";
+      position: absolute;
+      width: inherit;
+      height: inherit;
+      background: linear-gradient(to bottom, $v1, $v3);
+      -webkit-mask-image: linear-gradient(to left, white, transparent);
+   }
+}
+
+* {
+   box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+}
+
+html,
+body {
+   margin: 0;
+   padding: 0;
 }
 
 body {
-    margin: 0px;
-    width: 100vw;
-    background-image: url("../images/agent-background.png");
-    background-repeat: repeat;
-
-    user-select: none; /* supported by Chrome and Opera */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none;
-
-    overflow-x: hidden;
-
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
+   width: 100vw;
+   height: 100vh;
+   margin: 0px;
+   padding: 0px;
+   background-color: #121212;
+   overflow: hidden;
 }
 
-@mixin noDrag {
-    user-drag: none;
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-}
+div {
+   &.background {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0px;
+      padding: 0px;
+      opacity: 0;
+      transition: opacity 2s;
+      z-index: -1;
 
-button {
-    background-color: rgba(255,255,255,0.08);
-    border: none;
-    border-radius: 20px;
-    padding: 12px 20px;
-    color: #ddd;
-    box-sizing: border-box;
-    margin: 0px 15px 10px;
-    font-family: 'Mark Pro';
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.25s;
+      &.brimstone {
+         @include QuadVertexColors(#936b34, #602c20, #312929, #1f191d);
+      }
 
-    &:hover {
-        background-color: rgba(255,255,255,0.15);
-    }
+      &.phoenix {
+         @include QuadVertexColors(#93884b, #8b5441, #37342f, #2d2121);
+      }
 
-    &.mobile-button {
-        display: none;
-        margin: 10px auto;
-        width: 80vw;
-    }
+      &.sage {
+         @include QuadVertexColors(#599597, #315d6b, #25474d, #102325);
+      }
+
+      &.sova {
+         @include QuadVertexColors(#938c79, #3b3135, #2e2e3c, #10182f);
+      }
+
+      &.viper {
+         @include QuadVertexColors(#62955b, #305a36, #313a4e, #1e323b);
+      }
+
+      &.cypher {
+         @include QuadVertexColors(#937160, #405081, #303a4e, #292d49);
+      }
+
+      &.reyna {
+         @include QuadVertexColors(#94525e, #793868, #302031, #291d3c);
+      }
+
+      &.killjoy {
+         @include QuadVertexColors(#928d34, #7e5c24, #473719, #312a34);
+      }
+
+      &.breach {
+         @include QuadVertexColors(#93702c, #783d23, #3c3223, #34261c);
+      }
+
+      &.omen {
+         @include QuadVertexColors(#289597, #344376, #16373b, #23304c);
+      }
+
+      &.jett {
+         @include QuadVertexColors(#649599, #41606d, #223641, #20364f);
+      }
+
+      &.raze {
+         @include QuadVertexColors(#937b3a, #884331, #353733, #2b382e);
+      }
+
+      &.skye {
+         @include QuadVertexColors(#6b9566, #6f633e, #293e35, #36211c);
+      }
+
+      &.yoru {
+         @include QuadVertexColors(#4a7897, #31377f, #18243f, #1b1a39);
+      }
+
+      &.astra {
+         @include QuadVertexColors(#935b92, #713670, #372335, #361572);
+      }
+
+      &.kayo {
+         @include QuadVertexColors(#399597, #367189, #26334b, #18243e);
+      }
+
+      &.chamber {
+         @include QuadVertexColors(#939154, #594127, #313339, #272324);
+      }
+
+      &.neon {
+         @include QuadVertexColors(#836497, #4b3991, #2a3364, #242559);
+      }
+
+      &.fade {
+         @include QuadVertexColors(#7e3949, #425d81, #422744, #1a293b);
+      }
+
+      &.harbor {
+         @include QuadVertexColors(#939578, #335b59, #2e312d, #0e2a31);
+      }
+   }
 }
 
 section {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 15px;
-    padding: 0px;
-    margin: 10px auto;
-    width: 1360px;
-    height: fit-content;
-    position: relative;
-    align-items: center;
-    justify-content: center;
+   transition: 1s width, 1s height;
 
-    div {
-        background-color: rgba(0,0,0,0.4);
-        height: fit-content;
-        border: 3px solid #fa4454;
-        border-radius: 15px;
+   &.content {
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      margin: 0px;
+      padding: 0px;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 0px;
+      grid-template-columns: fit-content fit-content;
+   }
 
-        img {
-            @include noDrag()
-        }
+   &:not(.content) {
+      border: 3px solid rgba(0, 0, 0, 0.25);
+   }
 
-        &.agent-container{
-            grid-column: 1 / 2; 
-            grid-row: 1 / 5;
+   &.agent {
+      border-bottom: none;
+      height: 85vh;
+      width: fit-content;
+      display: flex;
+      vertical-align: middle;
+      align-content: center;
+      justify-content: center;
+      // background-color: red;
+      grid-row: 1 / 4;
+      width: 100%;
 
-            img {
-                display: block;
-                margin: 0px auto;
-                width: auto;
-                height: 100%;
+      img {
+         &.char_img {
+            z-index: 3;
+            height: 100%;
+         }
+      }
+   }
+
+   &.weapon {
+      // background-color: orange;
+      height: 25vh;
+      height: 100%;
+      width: auto;
+      padding: 5px 5px;
+      text-align: center;
+      display: table;
+
+      div {
+         display: table-cell;
+         vertical-align: middle;
+
+         img {
+            filter: drop-shadow(10px 15px 10px rgba(0, 0, 0, 0.8));
+            max-height: 85%;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
+            margin: 0px auto;
+         }
+
+         span {
+            font-family: "Tungsten", sans-serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            display: block;
+            color: rgba(255, 255, 255, 0.9);
+         }
+      }
+   }
+
+   &.strat {
+      // background-color: yellow;
+      min-height: 10vh;
+      height: 100%;
+      width: auto;
+      padding: 10px 20px 20px;
+      display: table;
+
+      div {
+         display: table-cell;
+         vertical-align: middle;
+
+         span {
+            &.strat_title {
+               font-family: "Tungsten", sans-serif;
+               font-size: clamp(3rem, 6vw, 5rem);
+               display: block;
+               color: rgba(255, 255, 255, 0.9);
             }
-        }
-
-        &:not(.agent-container):not(.weapon-container) {
-            h1 {
-                color: white;
-                font-family: "Tungsten";
-                text-transform: uppercase;
-                font-size: 64px;
-                margin: 0px;
-                position: relative;
-                padding: 0px 15px;
+            &.strat_desc {
+               font-family: "Ubuntu", sans-serif;
+               font-size: clamp(1rem, 2vw, 1.5rem);
+               color: rgba(255, 255, 255, 0.7);
             }
+         }
+      }
+   }
 
-            p {
-                color: white;
-                font-family: "Mark Pro";
-                font-size: 20px;
-                position: relative;
-                font-weight: 100;
-                padding: 0px 15px;
-                margin: 10px 0px;
-            }
-        }
+   &.info {
+      // background-color: blue;
+      height: 100%;
+      width: auto;
+      padding: 10px 20px;
+      display: table;
+      div {
+         display: table-cell;
+         vertical-align: middle;
+         h1 {
+            font-family: "Tungsten", sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            display: block;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            margin: 0px;
+            padding: 0px;
+         }
 
-        a {
-            color:#fa4454;
+         p {
+            font-family: "Ubuntu", sans-serif;
+            font-size: clamp(1rem, 1vw, 2rem);
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0px 0px 15px;
+            padding: 0px;
+         }
+
+         button {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: none;
+            border-radius: 30px;
+            padding: 12px 20px;
+            color: #ddd;
+            box-sizing: border-box;
+            font-family: "Mark Pro";
+            cursor: pointer;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            transition: background-color 0.25s;
 
             &:hover {
-                color: #fd8993;
+               background-color: rgba(255, 255, 255, 0.15);
             }
-        }
-    }
+         }
+      }
+   }
+
+   &.agent_info,
+   &.agent_info_mobile {
+      // background-color: green;
+      height: 15vh;
+      width: auto;
+      border-top: none;
+      display: table;
+
+      div {
+         margin: 0px auto;
+         display: table-cell;
+         vertical-align: middle;
+         text-align: center;
+
+         p {
+            text-align: center;
+            padding: 0px;
+            margin: 0px;
+
+            &.agent_name {
+               font-family: "Tungsten", sans-serif;
+               font-size: clamp(5.5rem, 7vw, 7.9rem);
+               color: rgba(255, 255, 255, 0.9);
+               text-transform: uppercase;
+               position: relative;
+            }
+
+            &.agent_type {
+               font-family: "Mark Pro", sans-serif;
+               font-size: clamp(1rem, 2.5vw, 2rem);
+               color: rgba(255, 255, 255, 0.7);
+               font-variant: small-caps;
+               top: -20px;
+               position: relative;
+            }
+         }
+      }
+   }
+
+   &.credits {
+      height: 100%;
+      width: auto;
+      padding: 10px 20px;
+      display: table;
+      div {
+         display: table-cell;
+         vertical-align: middle;
+         h1 {
+            font-family: "Tungsten", sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            display: block;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            margin: 0px;
+            padding: 0px;
+         }
+
+         p {
+            font-family: "Ubuntu", sans-serif;
+            font-size: clamp(1rem, 1vw, 2rem);
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0px 0px 15px;
+            padding: 0px;
+         }
+
+         a {
+            transition: 0.5s color;
+            color: rgba(255, 255, 255, 0.3);
+
+            &:hover {
+               color: rgba(255, 255, 255, 0.5);
+            }
+         }
+      }
+   }
+
+   &.agent_info_mobile {
+      display: none;
+   }
+
+   &.credits {
+      // background-color: blue;
+      height: 15vh;
+      width: auto;
+   }
 }
 
-@media screen and (max-width: 1360px) {
-    section {
-        grid-template-columns: repeat(1, 1fr);
-        margin: 10px auto;
-        width: 100vw;
+@media screen and (max-width: 850px) {
+   html {
+      height: 100vh;
+   }
 
-        div {
-            width: fit-content;
+   body {
+      min-width: 100%;
+      min-height: 100vh;
+      overflow-y: scroll;
+   }
+
+   section {
+      &.content {
+         grid-template-columns: repeat(1, 1fr);
+         width: 100%;
+         .agent {
             height: fit-content;
-            margin: 0px auto;
-
-            &:not(.agent-container):not(.weapon-container) {
-                width: 80vw;
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 750px) {
-    section {
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap: 10px;
-        margin: 0px;
-
-        div {
-            border-radius: 0px;
-            width: 99vw !important;
-
             img {
-                width: 100vw !important;
-                height: auto !important;   
+               width: 95vw;
+               height: auto !important;
             }
+         }
 
-            &.instructions-container {
-                display: none   ;
-            }
-        }
-    }
+         .strat {
+            min-height: inherit;
+         }
+      }
 
-    .mobile-button {
-        display: block !important;
-    }
+      &.agent_info_mobile {
+         display: inherit;
+      }
+
+      &.agent_info {
+         display: none;
+      }
+   }
 }

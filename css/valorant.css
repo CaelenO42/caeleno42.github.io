@@ -1,0 +1,476 @@
+@font-face {
+  font-family: "Tungsten";
+  src: url("../fonts/Tungsten-Bold.ttf");
+}
+@font-face {
+  font-family: "Mark Pro";
+  src: url("../fonts/Mark-Pro.woff2");
+}
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  background-color: #121212;
+  overflow: hidden;
+}
+
+div.background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0px;
+  padding: 0px;
+  opacity: 0;
+  transition: opacity 2s;
+  z-index: -1;
+}
+div.background.brimstone {
+  background: linear-gradient(to bottom, #936b34, #312929);
+}
+div.background.brimstone::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #602c20, #1f191d);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.phoenix {
+  background: linear-gradient(to bottom, #93884b, #37342f);
+}
+div.background.phoenix::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #8b5441, #2d2121);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.sage {
+  background: linear-gradient(to bottom, #599597, #25474d);
+}
+div.background.sage::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #315d6b, #102325);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.sova {
+  background: linear-gradient(to bottom, #938c79, #2e2e3c);
+}
+div.background.sova::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #3b3135, #10182f);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.viper {
+  background: linear-gradient(to bottom, #62955b, #313a4e);
+}
+div.background.viper::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #305a36, #1e323b);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.cypher {
+  background: linear-gradient(to bottom, #937160, #303a4e);
+}
+div.background.cypher::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #405081, #292d49);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.reyna {
+  background: linear-gradient(to bottom, #94525e, #302031);
+}
+div.background.reyna::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #793868, #291d3c);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.killjoy {
+  background: linear-gradient(to bottom, #928d34, #473719);
+}
+div.background.killjoy::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #7e5c24, #312a34);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.breach {
+  background: linear-gradient(to bottom, #93702c, #3c3223);
+}
+div.background.breach::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #783d23, #34261c);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.omen {
+  background: linear-gradient(to bottom, #289597, #16373b);
+}
+div.background.omen::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #344376, #23304c);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.jett {
+  background: linear-gradient(to bottom, #649599, #223641);
+}
+div.background.jett::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #41606d, #20364f);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.raze {
+  background: linear-gradient(to bottom, #937b3a, #353733);
+}
+div.background.raze::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #884331, #2b382e);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.skye {
+  background: linear-gradient(to bottom, #6b9566, #293e35);
+}
+div.background.skye::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #6f633e, #36211c);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.yoru {
+  background: linear-gradient(to bottom, #4a7897, #18243f);
+}
+div.background.yoru::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #31377f, #1b1a39);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.astra {
+  background: linear-gradient(to bottom, #935b92, #372335);
+}
+div.background.astra::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #713670, #361572);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.kayo {
+  background: linear-gradient(to bottom, #399597, #26334b);
+}
+div.background.kayo::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #367189, #18243e);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.chamber {
+  background: linear-gradient(to bottom, #939154, #313339);
+}
+div.background.chamber::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #594127, #272324);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.neon {
+  background: linear-gradient(to bottom, #836497, #2a3364);
+}
+div.background.neon::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #4b3991, #242559);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+div.background.fade {
+  background: linear-gradient(to bottom, #7e3949, #422744);
+}
+div.background.fade::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to bottom, #425d81, #1a293b);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+
+section {
+  transition: 1s width, 1s height;
+}
+section.content {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  margin: 0px;
+  padding: 0px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0px;
+  grid-template-columns: fit-content fit-content;
+}
+section:not(.content) {
+  border: 3px solid rgba(0, 0, 0, 0.25);
+}
+section.agent {
+  border-bottom: none;
+  height: 85vh;
+  width: fit-content;
+  display: flex;
+  vertical-align: middle;
+  align-content: center;
+  justify-content: center;
+  grid-row: 1/4;
+  width: 100%;
+}
+section.agent img.char_img {
+  z-index: 3;
+  height: 100%;
+}
+section.weapon {
+  height: 25vh;
+  height: 100%;
+  width: auto;
+  padding: 5px 5px;
+  text-align: center;
+  display: table;
+}
+section.weapon div {
+  display: table-cell;
+  vertical-align: middle;
+}
+section.weapon div img {
+  filter: drop-shadow(10px 15px 10px rgba(0, 0, 0, 0.8));
+  max-height: 85%;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0px auto;
+}
+section.weapon div span {
+  font-family: "Tungsten", sans-serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  display: block;
+  color: rgba(255, 255, 255, 0.9);
+}
+section.strat {
+  min-height: 10vh;
+  height: 100%;
+  width: auto;
+  padding: 10px 20px 20px;
+  display: table;
+}
+section.strat div {
+  display: table-cell;
+  vertical-align: middle;
+}
+section.strat div span.strat_title {
+  font-family: "Tungsten", sans-serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  display: block;
+  color: rgba(255, 255, 255, 0.9);
+}
+section.strat div span.strat_desc {
+  font-family: "Ubuntu", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: rgba(255, 255, 255, 0.7);
+}
+section.info {
+  height: 100%;
+  width: auto;
+  padding: 10px 20px;
+  display: table;
+}
+section.info div {
+  display: table-cell;
+  vertical-align: middle;
+}
+section.info div h1 {
+  font-family: "Tungsten", sans-serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  display: block;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  margin: 0px;
+  padding: 0px;
+}
+section.info div p {
+  font-family: "Ubuntu", sans-serif;
+  font-size: clamp(1rem, 1vw, 2rem);
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0px 0px 15px;
+  padding: 0px;
+}
+section.info div button {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: none;
+  border-radius: 30px;
+  padding: 12px 20px;
+  color: #ddd;
+  box-sizing: border-box;
+  font-family: "Mark Pro";
+  cursor: pointer;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  transition: background-color 0.25s;
+}
+section.info div button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+section.agent_info, section.agent_info_mobile {
+  height: 15vh;
+  width: auto;
+  border-top: none;
+  display: table;
+}
+section.agent_info div, section.agent_info_mobile div {
+  margin: 0px auto;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+section.agent_info div p, section.agent_info_mobile div p {
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+}
+section.agent_info div p.agent_name, section.agent_info_mobile div p.agent_name {
+  font-family: "Tungsten", sans-serif;
+  font-size: clamp(5.5rem, 7vw, 7.9rem);
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  position: relative;
+}
+section.agent_info div p.agent_type, section.agent_info_mobile div p.agent_type {
+  font-family: "Mark Pro", sans-serif;
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  color: rgba(255, 255, 255, 0.7);
+  font-variant: small-caps;
+  top: -20px;
+  position: relative;
+}
+section.credits {
+  height: 100%;
+  width: auto;
+  padding: 10px 20px;
+  display: table;
+}
+section.credits div {
+  display: table-cell;
+  vertical-align: middle;
+}
+section.credits div h1 {
+  font-family: "Tungsten", sans-serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  display: block;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  margin: 0px;
+  padding: 0px;
+}
+section.credits div p {
+  font-family: "Ubuntu", sans-serif;
+  font-size: clamp(1rem, 1vw, 2rem);
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0px 0px 15px;
+  padding: 0px;
+}
+section.credits div a {
+  transition: 0.5s color;
+  color: rgba(255, 255, 255, 0.3);
+}
+section.credits div a:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
+section.agent_info_mobile {
+  display: none;
+}
+section.credits {
+  height: 15vh;
+  width: auto;
+}
+
+@media screen and (max-width: 850px) {
+  html {
+    height: 100vh;
+  }
+  body {
+    min-width: 100%;
+    min-height: 100vh;
+    overflow-y: scroll;
+  }
+  section.content {
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+  }
+  section.content .agent {
+    height: fit-content;
+  }
+  section.content .agent img {
+    width: 95vw;
+    height: auto !important;
+  }
+  section.content .strat {
+    min-height: inherit;
+  }
+  section.agent_info_mobile {
+    display: inherit;
+  }
+  section.agent_info {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=valorant.css.map */

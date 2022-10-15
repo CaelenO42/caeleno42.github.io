@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <title>CaelenO42 | &lt;meter\&gt;</title>
+      <link rel="icon" href="../images/favicon.png" />
+      <script src="https://kit.fontawesome.com/56b07f00c9.js" crossorigin="anonymous"></script>
+      <link rel="stylesheet" type="text/css" href="css/meter.css" />
+   </head>
+   <body>
+      <div class="meter">
+         <input type="range" min="-15" max="15" step="1" id="slider" value="0" />
+         <label id="slider_label" for="slider">0</label>
+      </div>
+      <div class="text">
+         <textarea id="textbox" placeholder="Express your feelings here" rows="6" cols="50"></textarea>
+         <button onclick="saveText()">Submit</button>
+         <button onclick="confirmClear()">Clear All Data</button>
+         <button onclick="window.location.href = '../index.html'">Back to Home</button>
+         <div class="user_text"></div>
+      </div>
+      <div class="desc">
+         <h1>&lt;meter\&gt;</h1>
+         <p>The meter is a place to catalouge your problems with whatever you want. You can change the meter positive or negative and write little notes and the data will save for when you return to the page.</p>
+         <p>
+            <strong>
+               Any data on the website is stored locally on your devide and is never sent to anyone including me. All of the code is also open source on <a href="https://github.com/CaelenO42/caeleno42.github.io" target="_blank">GitHub</a> if you want
+               to take a look.
+            </strong>
+         </p>
+      </div>
+
+      <script>
+         var size = 0;
+         var data = {
+            range: 0,
+            userText: [],
+         };
+
+         if (localStorage.getItem("c42_meter")) {
+            data = JSON.parse(atob(localStorage.getItem("c42_meter")));
+            loadData();
+         }
+
+         $(document).on("input change", "#slider", function () {
+            size = parseInt($(this).val());
+            $("#slider_label").html(size);
+            data.range = size;
+
+            updateBg();
+         });
+
+         function loadData() {
+            size = data.range;
+            $("#slider").val(size);
+            $("#slider_label").html(size);
+            updateBg();
+
+            let text = data.userText;
+
+            for (var i = 0; i < text.length; i++) {
+               let temp = text[i].replace(/\n/g, "<br/>");
+               $(".user_text").append(`<p>${temp}</p>`);
+            }
+         }
+
+         function updateBg() {
+            if (size <= -10) {
+               $("body").css("backgroundColor", "#880000");
+            } else if (size >= 10) {
+               $("body").css("backgroundColor", "#00800F");
+            } else {
+               $("body").css("backgroundColor", "#11407e");
+            }
+         }
+
+         function confirmClear() {
+            if (confirm("Are you sure you want to erase all saved data?")) clearData();
+         }
+
+         function clearData() {
+            data = {
+               range: 0,
+               userText: [],
+            };
+            $("#slider").val(0);
+            $("#slider_label").html(0);
+            size = 0;
+            updateBg();
+            $("#textbox").val("");
+            $(".user_text").html("");
+
+            localStorage.removeItem("c42_meter");
+         }
+
+         function saveText() {
+            if ($("#textbox").val() == "") return;
+            let userText = $("#textbox").val().replace(/\n/g, "<br/>");
+            $("#textbox").val("");
+            $(".user_text").append(`<p>${userText}</p>`);
+            data.userText.push(userText);
+         }
+
+         $(window).on("unload", function () {
+            localStorage.setItem("c42_meter", btoa(JSON.stringify(data)));
+         });
+      </script>
+   </body>
+</html>

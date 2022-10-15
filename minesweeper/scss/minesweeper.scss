@@ -1,0 +1,285 @@
+@font-face {
+   font-family: "Minesweeper";
+   src: url(../fonts/minesweeper.ttf);
+}
+
+@font-face {
+   font-family: "Segment";
+   src: url(../fonts/segment.ttf);
+}
+
+html,
+body {
+   margin: 0px;
+   padding: 0px;
+   background-color: #121212;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 100vh;
+   width: 100vw;
+}
+
+.back {
+   position: absolute;
+   top: 10px;
+   left: 15px;
+   width: fit-content;
+
+   a {
+      color: rgba($color: #fff, $alpha: 0.15);
+      font-family: "Ubuntu Mono";
+      text-decoration: none;
+      transition: 0.25s color;
+
+      svg {
+         font-size: 1.75em;
+      }
+
+      &:hover {
+         color: rgba($color: #fff, $alpha: 0.8);
+      }
+
+      p {
+         display: inline;
+         font-size: 1.25em;
+         position: relative;
+         top: -4px;
+      }
+   }
+}
+
+.game-container {
+   width: 1054px;
+   height: 1146px;
+   background-color: silver;
+   border: 4px solid white;
+
+   .controls {
+      width: 1034px;
+      height: 75px;
+      background-color: silver;
+      margin: 10px auto;
+      position: relative;
+      top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset -3px -3px #fff, inset 3px 3px #808080;
+
+      .slider {
+         padding: 12px;
+         box-shadow: inset -3px -3px #808080, inset 3px 3px #fff;
+         margin-right: 15px;
+
+         input#slider {
+            -webkit-appearance: none;
+            width: 420px;
+            height: 5px;
+            background: gray;
+            outline: none;
+            -webkit-transition: 0.2s;
+            transition: opacity 0.2s;
+            position: relative;
+            top: -3px;
+
+            &::-webkit-slider-thumb {
+               -webkit-appearance: none;
+               appearance: none;
+               width: 12px;
+               height: 22px;
+               background: silver;
+               box-shadow: inset -2px -2px #808080, inset 2px 2px #fff;
+               cursor: pointer;
+            }
+
+            &::-moz-range-thumb {
+               width: 12px;
+               height: 22px;
+               background: silver;
+               box-shadow: inset -2px -2px #808080, inset 2px 2px #fff;
+               cursor: pointer;
+            }
+         }
+
+         label#slider-label {
+            color: black;
+            padding: 5px;
+            margin: 5px;
+            font-family: "Segment";
+            font-size: 1em;
+            position: relative;
+            top: 2px;
+         }
+      }
+
+      button {
+         box-shadow: none;
+         background-color: silver;
+         font-family: "Ubuntu Mono";
+         font-weight: 600;
+         font-size: 1.25em;
+         color: black;
+         padding: 12px;
+         border: none;
+         transition: 0.3s background-color;
+         box-shadow: inset -3px -3px #808080, inset 3px 3px #fff;
+         margin: 15px;
+
+         &:hover {
+            cursor: pointer;
+            background-color: rgba($color: #fff, $alpha: 0.2);
+         }
+
+         &:active {
+            box-shadow: inset -3px -3px #fff, inset 3px 3px #808080;
+         }
+      }
+
+      .flag-display {
+         font-family: "minesweeper";
+         font-size: 1.25em;
+         color: red;
+         background-color: black;
+         margin-left: 15px;
+         padding: 12px;
+         box-shadow: inset -2px -2px #fff, inset 2px 2px #808080;
+
+         #flags {
+            font-family: "Segment";
+            position: relative;
+            filter: drop-shadow(1px 1px 2px darkred);
+         }
+      }
+
+      form {
+         padding: 7px;
+         background-color: black;
+         box-shadow: inset -2px -2px #fff, inset 2px 2px #808080;
+         width: fit-content;
+         display: inline-block;
+         margin: 15px;
+
+         label {
+            span {
+               color: rgba(255, 255, 255, 0.2);
+               width: fit-content;
+               height: fit-content;
+            }
+         }
+
+         svg {
+            margin: 0.2rem;
+         }
+
+         input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+         }
+
+         input[type="radio"] + span {
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+         }
+
+         input + span,
+         input {
+            cursor: pointer;
+         }
+
+         input.easy:hover + span,
+         input.easy:checked + span,
+         input.easy:focus + span {
+            // color: rgb(0, 204, 79);
+            color: limegreen;
+         }
+
+         input.medium:hover + span,
+         input.medium:checked + span,
+         input.medium:focus + span {
+            color: gold;
+         }
+
+         input.hard:hover + span,
+         input.hard:checked + span,
+         input.hard:focus + span {
+            color: red;
+         }
+      }
+   }
+
+   .game {
+      display: grid;
+      width: 1024px;
+      height: 1024px;
+      background-color: gray;
+      // border: 5px solid gray;
+      grid-gap: 1.5px;
+      margin: 15px auto;
+      padding: 5px;
+      box-shadow: inset -5px -5px #fff, inset 5px 5px #808080;
+
+      .cell {
+         display: flex;
+         font-family: "Minesweeper";
+         align-items: center;
+         justify-content: center;
+         background-color: silver;
+         margin: 0px;
+         padding: 0px;
+         // box-shadow: inset -3px -3px #0a0a0a, inset 3px 3px #fff, inset -6px -6px grey, inset 6px 6px #dfdfdf;
+         box-shadow: inset -4px -4px #808080, inset 4px 4px #fff;
+      }
+
+      .uncovered {
+         box-shadow: none;
+      }
+
+      .boom {
+         background-color: red;
+      }
+
+      .wrongFlag {
+         color: red;
+         font-weight: bolder;
+
+         span {
+            position: relative;
+            top: -13%;
+            left: -2%;
+         }
+      }
+
+      .one {
+         color: #00f;
+      }
+
+      .two {
+         color: #080;
+      }
+
+      .three {
+         color: #f00;
+      }
+
+      .four {
+         color: #008;
+      }
+
+      .five {
+         color: #800;
+      }
+
+      .six {
+         color: #008080;
+      }
+
+      .seven {
+         color: #000000;
+      }
+
+      .eight {
+         color: #808080;
+      }
+   }
+}

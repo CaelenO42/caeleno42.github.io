@@ -1,0 +1,148 @@
+@font-face {
+  font-family: "Fira Code";
+  src: url(../../fonts/FiraCode-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Fira Code";
+  src: url(../../fonts/FiraCode-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Fira Code";
+  src: url(../../fonts/FiraCode-Medium.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Fira Code";
+  src: url(../../fonts/FiraCode-SemiBold.ttf);
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Fira Code";
+  src: url(../../fonts/FiraCode-Bold.ttf);
+  font-weight: 700;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+body {
+  background-color: #11407e;
+  transition: all 0.5s;
+}
+
+div {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  margin: 15px;
+  color: rgba(255, 255, 255, 0.8);
+}
+div.meter {
+  padding: 15px 20px;
+}
+div.meter input#slider {
+  -webkit-appearance: none;
+  width: 420px;
+  height: 5px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 30px;
+  outline: none;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  position: relative;
+  top: -3px;
+}
+div.meter input#slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 8px;
+  height: 22px;
+  background: #2a6fc9;
+  cursor: pointer;
+  border-radius: 6px;
+}
+div.meter input#slider::-moz-range-thumb {
+  appearance: none;
+  width: 8px;
+  height: 22px;
+  background: #2a6fc9;
+  cursor: pointer;
+  border-radius: 6px;
+}
+div.meter label#slider_label {
+  color: rgba(255, 255, 255, 0.8);
+  font-family: "Fira Code";
+  font-weight: 500;
+  padding: 0px 5px;
+}
+div.text button {
+  border: 2px solid #ccc;
+  background-color: #f8f8f8;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: 0.5s;
+  font-family: "Fira Code";
+  font-size: 16px;
+  width: 33%;
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 500;
+}
+div.text button:hover {
+  background-color: #bdbdbd;
+  border: 2px solid rgb(141, 141, 141);
+}
+div.text textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 15px 15px 0px 0px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+  outline: none;
+  transition: 0.5s;
+}
+div.text textarea:focus {
+  background-color: #bdbdbd;
+  border: 2px solid rgb(141, 141, 141);
+}
+div.text .user_text {
+  margin: 0px;
+  padding: 10px;
+  border-radius: 0px 0px 15px 15px;
+}
+div.text .user_text p {
+  margin: 0px;
+  font-family: "Fira Code";
+  padding: 7px;
+}
+div.desc {
+  padding: 15px;
+  max-width: 80vw;
+}
+div.desc h1,
+div.desc p {
+  font-family: "Fira Code";
+  margin: 0;
+  padding: 10px 5px;
+}
+div.desc h1 {
+  color: white;
+}
+div.desc a {
+  color: white;
+  transition: background-color 0.35s, color 0.35s;
+}
+div.desc a:hover {
+  color: #2a6fc9;
+}
+
+/*# sourceMappingURL=meter.css.map */

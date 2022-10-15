@@ -26,7 +26,7 @@
 body {
   margin: 0px;
   padding: 0px;
-  background-color: #000D18;
+  background-color: #000d18;
   overflow-x: hidden;
   width: 100vw;
   -ms-overflow-style: none;
@@ -39,7 +39,7 @@ body::-webkit-scrollbar {
 }
 
 nav {
-  background-color: #000D18;
+  background-color: #000d18;
   width: 100vw;
   margin: 0;
   padding: 0;
@@ -92,19 +92,19 @@ nav ul li a:hover {
   background-color: rgba(255, 255, 255, 0.12);
 }
 nav ul li a:hover.youtube, nav ul li a:active.youtube {
-  color: #F10002 !important;
+  color: #f10002 !important;
 }
 nav ul li a:hover.twitch, nav ul li a:active.twitch {
-  color: #8A43F2 !important;
+  color: #8a43f2 !important;
 }
 nav ul li a:hover.twitter, nav ul li a:active.twitter {
-  color: #1C99E6 !important;
+  color: #1c99e6 !important;
 }
 nav ul li a:hover.github, nav ul li a:active.github {
   color: #aaa !important;
 }
 nav ul li a:hover.coffee, nav ul li a:active.coffee {
-  color: #F2D200 !important;
+  color: #f2d200 !important;
 }
 nav ul li.right {
   float: right;
@@ -139,17 +139,14 @@ nav ul li {
     position: relative;
     top: -8px;
   }
-
   li.right {
     width: 15vw;
     display: inline-block;
     margin: 0px 2.1vw;
   }
-
   ul {
     display: none !important;
   }
-
   section div img.pfp {
     width: 40vw;
   }
@@ -184,19 +181,25 @@ section.landing {
   background-color: #00386a;
 }
 section.stuff {
-  background-color: #003260;
+  background-color: #003361;
 }
 section.valorant {
-  background-color: #002d56;
+  background-color: #002e58;
+}
+section.minesweeper {
+  background-color: #002a4f;
+}
+section.meter {
+  background-color: #002546;
 }
 section.wordle {
-  background-color: #00284c;
+  background-color: #00203e;
 }
 section.soon {
-  background-color: #002343;
+  background-color: #001c35;
 }
 section.support {
-  background-color: #001e39;
+  background-color: #00172d;
 }
 section h1 {
   padding: 0px;
@@ -208,16 +211,16 @@ section p {
   font-weight: 300;
 }
 section p a {
-  color: #A0A0A0 !important;
+  color: #a0a0a0 !important;
 }
 section p a:hover {
-  color: #7B99A9 !important;
+  color: #7b99a9 !important;
 }
 section p a:active {
-  color: #5E92AE !important;
+  color: #5e92ae !important;
 }
 section p a:visited {
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 section div {
   display: inline-block;
@@ -237,13 +240,19 @@ section .val_img {
 }
 section .wordle_img {
   width: 15vw;
+  height: auto;
   position: relative;
-  top: 20px;
+  padding: 10px;
+}
+section .mine_img {
+  width: 15vw;
+  padding: 10px;
+  margin-top: -10px;
 }
 section i,
 section svg {
   color: white;
-  margin: 0px 20px;
+  margin: 25px;
   user-drag: none;
   -webkit-user-drag: none;
   user-select: none;
@@ -283,7 +292,7 @@ section img {
 footer {
   width: 100vw;
   height: 90px;
-  background-color: #000D18;
+  background-color: #000d18;
   margin: 0px;
   padding: 0px;
   display: grid;
@@ -320,16 +329,16 @@ footer div p {
   margin-left: 20px;
 }
 footer div a {
-  color: #A0A0A0 !important;
+  color: #a0a0a0 !important;
 }
 footer div a:hover {
-  color: #7B99A9 !important;
+  color: #7b99a9 !important;
 }
 footer div a:active {
-  color: #5E92AE !important;
+  color: #5e92ae !important;
 }
 footer div a:visited {
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 footer div div {
   display: grid;
@@ -343,19 +352,19 @@ footer div div a {
   transition: color 0.25s;
 }
 footer div div a:hover.youtube, footer div div a:active.youtube {
-  color: #F10002 !important;
+  color: #f10002 !important;
 }
 footer div div a:hover.twitch, footer div div a:active.twitch {
-  color: #8A43F2 !important;
+  color: #8a43f2 !important;
 }
 footer div div a:hover.twitter, footer div div a:active.twitter {
-  color: #1C99E6 !important;
+  color: #1c99e6 !important;
 }
 footer div div a:hover.github, footer div div a:active.github {
   color: #ddd !important;
 }
 footer div div a:hover.coffee, footer div div a:active.coffee {
-  color: #F2D200 !important;
+  color: #f2d200 !important;
 }
 footer div div p {
   font-weight: 600;
@@ -460,23 +469,23 @@ footer div div .links {
   color: rgba(255, 255, 255, 0.9);
 }
 .discord div.tiles .tile.pro {
-  background-color: #26A28D;
+  background-color: #26a28d;
 }
 .discord div.tiles .tile.time {
-  background-color: #5E92AE;
+  background-color: #5e92ae;
 }
 .discord div.tiles .tile.th {
-  background-color: #9146FF;
+  background-color: #9146ff;
 }
 .discord div.tiles .tile.yt {
   background-color: red;
 }
 .discord div.tiles .tile.tr {
-  background-color: #1DA1F2;
+  background-color: #1da1f2;
 }
 .discord div.tiles .tile.st {
-  background: #091b3f;
-  background: linear-gradient(180deg, #091b3f 0%, #1388b9 100%);
+  background: rgb(9, 27, 63);
+  background: linear-gradient(180deg, rgb(9, 27, 63) 0%, rgb(19, 136, 185) 100%);
 }
 .discord div.tiles .tile.ws {
   background-color: rgba(255, 255, 255, 0.12);

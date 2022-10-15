@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <title>Untitled Document</title>
+      <script src="https://kit.fontawesome.com/56b07f00c9.js" crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" type="text/css" href="css/minesweeper.css" />
+   </head>
+
+   <body>
+      <div class="back">
+         <a href="../index.html">
+            <i class="fa-solid fa-angle-left fa-2x"></i>
+            <p>Back</p>
+         </a>
+      </div>
+      <div class="game-container">
+         <div class="controls">
+            <div class="slider">
+               <input type="range" min="9" max="22" step="1" value="9" id="slider" />
+               <label id="slider-label" for="slider">9</label>
+            </div>
+
+            <button onclick="newGame()">Start New Game</button>
+
+            <form class="rating-form">
+               <label for="easy">
+                  <input type="radio" name="rating" class="easy" id="easy" value="8.1" checked />
+                  <span>
+                     <i class="fa-regular fa-face-smile fa-2x"></i>
+                  </span>
+               </label>
+
+               <label for="medium">
+                  <input type="radio" name="rating" class="medium" id="medium" value="6.4" />
+                  <span>
+                     <i class="fa-regular fa-face-meh fa-2x"></i>
+                  </span>
+               </label>
+
+               <label for="hard">
+                  <input type="radio" name="rating" class="hard" id="hard" value="4.85" />
+                  <span>
+                     <i class="fa-regular fa-face-angry fa-2x"></i>
+                  </span>
+               </label>
+            </form>
+
+            <p class="flag-display">` <span id="flags">0/10</span></p>
+         </div>
+         <div class="game"></div>
+      </div>
+      <script>
+         var size = 9;
+         var gameBoard = [];
+         var gameMap = [];
+         var bombTotal = 0;
+         var difficulty = 0;
+         var bombExplode = false;
+         var flagsPlaced = 0;
+
+         newGame();
+
+         $(document).on("input change", "#slider", function () {
+            size = parseInt($(this).val());
+            $("#slider-label").html(size);
+         });
+
+         $(".game").bind("contextmenu", function (e) {
+            return false;
+         });
+
+         $(".game").mousedown(function (e) {
+            e.preventDefault();
+            let id = e.target.id;
+            if (id != "") {
+               switch (event.which) {
+                  case 1:
+                     boardClick(id, "left");
+                     break;
+                  case 2:
+                     break;
+                  case 3:
+                     boardClick(id, "right");
+                     break;
+                  default:
+                     console.log("da hek");
+                     break;
+               }
+            }
+         });
+
+         function newGame() {
+            difficulty = parseFloat($('input[name="rating"]:checked').val());
+
+            clearGame();
+
+            initializeBoard();
+
+            generateCells();
+
+            initializeStyles();
+
+            generateBombs();
+
+            calculateNumbers();
+
+            printBoard();
+         }
+
+         function clearGame() {
+            $(".game").html("");
+            gameBoard = [];
+            gameMap = [];
+            bombExplode = false;
+            flagsPlaced = 0;
+         }
+
+         function initializeStyles() {
+            $(".game").css("grid-template-columns", `repeat(${size}, 1fr)`);
+
+            let cellSize = Math.round(1024 / size) - 2 + "px";
+            let fontSize = Math.round(1024 / size) / 35 + "vmin";
+
+            $(".cell").css({
+               width: cellSize,
+               height: cellSize,
+               fontSize: fontSize,
+            });
+         }
+
+         function initializeBoard() {
+            let tempGameBoard = Array.apply(null, Array(size)).map(function () {});
+            tempGameBoard.forEach((element, index) => {
+               tempGameBoard[index] = Array.apply(null, Array(size)).map(function () {});
+            });
+
+            for (var i = 0; i < tempGameBoard.length; i++) {
+               for (var k = 0; k < tempGameBoard[i].length; k++) {
+                  tempGameBoard[i][k] = " ";
+               }
+            }
+            gameBoard = tempGameBoard;
+
+            let tempGameMap = Array.apply(null, Array(size)).map(function () {});
+            tempGameMap.forEach((element, index) => {
+               tempGameMap[index] = Array.apply(null, Array(size)).map(function () {});
+            });
+
+            for (var i = 0; i < tempGameMap.length; i++) {
+               for (var k = 0; k < tempGameMap[i].length; k++) {
+                  tempGameMap[i][k] = " ";
+               }
+            }
+            gameMap = tempGameMap;
+         }
+
+         function generateCells() {
+            let total = gameBoard.length * gameBoard[0].length;
+
+            for (var i = 0; i < total; i++) {
+               $(".game").append(`<div id="${i}" class="cell"></div>`);
+            }
+         }
+
+         function generateBombs() {
+            bombTotal = Math.round((gameMap.length * gameMap[0].length) / difficulty);
+
+            for (var i = 0; i < bombTotal; i) {
+               let x = Math.floor(Math.random() * size);
+               let y = Math.floor(Math.random() * size);
+
+               if (gameMap[x][y] != "*") {
+                  gameMap[x][y] = "*";
+                  i++;
+               }
+            }
+
+            // Easy - 8.1
+            // Intermediate - 6.4
+            // Expert - 4.85
+         }
+
+         function printBoard() {
+            if (!bombExplode) {
+               let board = "┌";
+               gameBoard.forEach((element) => (board += "─"));
+               board += "┐\n";
+               for (var i = 0; i < gameBoard.length; i++) {
+                  board += "│";
+                  for (var k = 0; k < gameBoard[i].length; k++) {
+                     board += gameBoard[i][k];
+                  }
+                  board += "│\n";
+               }
+               board += "└";
+               gameBoard.forEach((element) => (board += "─"));
+               board += "┘";
+
+               console.log(board);
+
+               let map = "┌";
+               gameMap.forEach((element) => (map += "─"));
+               map += "┐\n";
+               for (var i = 0; i < gameMap.length; i++) {
+                  map += "│";
+                  for (var k = 0; k < gameMap[i].length; k++) {
+                     map += gameMap[i][k];
+                  }
+                  map += "│\n";
+               }
+               map += "└";
+               gameMap.forEach((element) => (map += "─"));
+               map += "┘";
+
+               console.log(map);
+
+               for (var i = 0; i < gameBoard.length; i++) {
+                  for (var k = 0; k < gameBoard[i].length; k++) {
+                     let place = i * gameBoard[i].length + k;
+                     $(`#${place}`).html(gameBoard[i][k]);
+                  }
+               }
+
+               $("#flags").html(`${flagsPlaced}/${bombTotal}`);
+            }
+         }
+
+         function calculateNumbers() {
+            let tempBoard = gameMap;
+
+            for (var x = 0; x < tempBoard.length; x++) {
+               for (var y = 0; y < tempBoard[x].length; y++) {
+                  if (tempBoard[x][y] != "*") {
+                     let num = 0;
+
+                     for (var h = x - 1; h < x + 2; h++) {
+                        for (var k = y - 1; k < y + 2; k++) {
+                           if (h < 0 || h > tempBoard.length - 1 || k < 0 || k > tempBoard[h].length) {
+                           } else {
+                              if (tempBoard[h][k] == "*") {
+                                 num++;
+                              }
+                           }
+                        }
+                     }
+                     if (num == 0) num = " ";
+                     tempBoard[x][y] = num;
+                  }
+               }
+            }
+
+            gameMap = tempBoard;
+         }
+
+         function boardClick(id, type) {
+            let x = Math.floor(id / size);
+            let y = id % size;
+
+            if (!bombExplode) {
+               if (type == "left") {
+                  if (gameMap[x][y] == "*" && gameBoard[x][y] != "`") {
+                     gameOver(id);
+                  } else if (gameMap[x][y] == " ") {
+                     $(`#${id}`).addClass("uncovered");
+                     squareCheck(id);
+                  } else if (gameBoard[x][y] != "`") {
+                     gameBoard[x][y] = gameMap[x][y];
+                     let num = numberToWords(gameMap[x][y]);
+                     $(`#${id}`).addClass(num);
+                     $(`#${id}`).addClass("uncovered");
+                  }
+               } else if (type == "right") {
+                  if (!$(`#${id}`).hasClass("uncovered")) {
+                     if (gameBoard[x][y] == "`") {
+                        gameBoard[x][y] = " ";
+                        --flagsPlaced;
+                     } else {
+                        gameBoard[x][y] = "`";
+                        ++flagsPlaced;
+                     }
+                  }
+               }
+            }
+            printBoard();
+            setTimeout(() => {
+               winDetect();
+            }, 500);
+         }
+
+         function gameOver(id) {
+            bombExplode = true;
+
+            $(`#${id}`).addClass("boom");
+
+            for (var i = 0; i < gameMap.length; i++) {
+               for (var k = 0; k < gameMap[i].length; k++) {
+                  let place = i * gameMap[i].length + k;
+                  if (gameBoard[i][k] == "`" && gameMap[i][k] == "*") {
+                  } else if (gameBoard[i][k] == "`" && gameMap[i][k] != "*") {
+                     $(`#${place}`).addClass("wrongFlag");
+                     $(`#${place}`).removeClass("uncovered");
+                     $(`#${place}`).html("<span>&times;</span>");
+                     let fontSize = Math.round(1024 / size) / 15 + "vmin";
+                     $(`#${place}`).css("font-size", fontSize);
+                     $(`#${place}`).css("line-height", "50px");
+                  } else {
+                     $(`#${place}`).html(gameMap[i][k]);
+                     $(`#${place}`).addClass("uncovered");
+                     let num = numberToWords(gameMap[i][k]);
+                     $(`#${place}`).addClass(num);
+                  }
+               }
+            }
+         }
+
+         function squareCheck(id) {
+            let x = Math.floor(id / size);
+            let y = id % size;
+
+            if (x != 0) {
+               for (var i = x; i >= 0; i--) {
+                  if (gameMap[i][y] == " ") {
+                     let place = i * gameMap[i].length + y;
+                     $(`#${place}`).addClass("uncovered");
+                     if (y != 0) {
+                        console.log("aaa");
+                        for (var k = y; k >= 0; k--) {
+                           if (gameMap[i][k] == " ") {
+                              let newPlace = i * gameMap[i].length + k;
+                              $(`#${newPlace}`).addClass("uncovered");
+                              if (x - i != 0) {
+                                 for (var j = x; j >= 0; j--) {
+                                    if (gameMap[j][k] == " ") {
+                                       let newNewPlace = j * gameMap[j].length + k;
+                                       $(`#${newNewPlace}`).addClass("uncovered");
+                                    } else {
+                                       break;
+                                    }
+                                 }
+                              }
+                              if (x - i != gameMap.length) {
+                                 for (var j = x; j < gameMap.length; j++) {
+                                    if (gameMap[j][k] == " ") {
+                                       let newNewPlace = j * gameMap[j].length + k;
+                                       $(`#${newNewPlace}`).addClass("uncovered");
+                                    } else {
+                                       break;
+                                    }
+                                 }
+                              }
+                           } else {
+                              break;
+                           }
+                        }
+                        if (y != gameMap[i].length) {
+                           console.log("bbb");
+                           for (var k = y; k < gameMap[i].length; k++) {
+                              if (gameMap[i][k] == " ") {
+                                 let newPlace = i * gameMap[i].length + k;
+                                 $(`#${newPlace}`).addClass("uncovered");
+                                 if (x - i != 0) {
+                                    for (var j = x; j >= 0; j--) {
+                                       if (gameMap[j][k] == " ") {
+                                          let newNewPlace = j * gameMap[j].length + k;
+                                          $(`#${newNewPlace}`).addClass("uncovered");
+                                       } else {
+                                          break;
+                                       }
+                                    }
+                                 }
+                                 if (x - i != gameMap.length) {
+                                    for (var j = x; j < gameMap.length; j++) {
+                                       if (gameMap[j][k] == " ") {
+                                          let newNewPlace = j * gameMap[j].length + k;
+                                          $(`#${newNewPlace}`).addClass("uncovered");
+                                       } else {
+                                          break;
+                                       }
+                                    }
+                                 }
+                              } else {
+                                 break;
+                              }
+                           }
+                        }
+                     }
+                  } else {
+                     break;
+                  }
+               }
+            }
+            if (x != gameMap.length) {
+               for (var i = x; i < gameMap.length; i++) {
+                  if (gameMap[i][y] == " ") {
+                     let place = i * gameMap[i].length + y;
+                     $(`#${place}`).addClass("uncovered");
+                     if (y != 0) {
+                        console.log("ccc");
+                        for (var k = y - 1; k >= 0; k--) {
+                           console.log(i + ", " + k);
+                           if (gameMap[i][k] == " ") {
+                              let newPlace = i * gameMap[i].length + k;
+                              $(`#${newPlace}`).addClass("uncovered");
+                              if (x - i != 0) {
+                                 for (var j = x; j >= 0; j--) {
+                                    if (gameMap[j][k] == " ") {
+                                       let newNewPlace = j * gameMap[j].length + k;
+                                       $(`#${newNewPlace}`).addClass("uncovered");
+                                    } else {
+                                       break;
+                                    }
+                                 }
+                              }
+                              if (x - i != gameMap.length) {
+                                 for (var j = x; j < gameMap.length; j++) {
+                                    if (gameMap[j][k] == " ") {
+                                       let newNewPlace = j * gameMap[j].length + k;
+                                       $(`#${newNewPlace}`).addClass("uncovered");
+                                    } else {
+                                       break;
+                                    }
+                                 }
+                              }
+                           } else {
+                              break;
+                           }
+                        }
+                        if (y != gameMap[i].length) {
+                           console.log("ddd");
+                           for (var k = y; k < gameMap[i].length; k++) {
+                              if (gameMap[i][k] == " ") {
+                                 let newPlace = i * gameMap[i].length + k;
+                                 $(`#${newPlace}`).addClass("uncovered");
+                                 if (x - i != 0) {
+                                    for (var j = x; j >= 0; j--) {
+                                       if (gameMap[j][k] == " ") {
+                                          let newNewPlace = j * gameMap[j].length + k;
+                                          $(`#${newNewPlace}`).addClass("uncovered");
+                                       } else {
+                                          break;
+                                       }
+                                    }
+                                 }
+                                 if (x - i != gameMap.length) {
+                                    for (var j = x; j < gameMap.length; j++) {
+                                       if (gameMap[j][k] == " ") {
+                                          let newNewPlace = j * gameMap[j].length + k;
+                                          $(`#${newNewPlace}`).addClass("uncovered");
+                                       } else {
+                                          break;
+                                       }
+                                    }
+                                 }
+                              } else {
+                                 break;
+                              }
+                           }
+                        }
+                     }
+                  } else {
+                     break;
+                  }
+               }
+            }
+         }
+
+         /* function squareCheck(id) {
+        let x = Math.floor(id / size);
+        let y = id % size;
+
+        if (x != 0) {
+          for (var i = x; i >= 0; i--) {
+            if (gameMap[i][y] == " ") {
+              let place = i * gameMap[i].length + y;
+              $(`#${place}`).addClass("uncovered");
+              if (y != 0) {
+                console.log("aaa");
+                for (var k = y; k >= 0; k--) {
+                  if (gameMap[i][k] == " ") {
+                    let newPlace = i * gameMap[i].length + k;
+                    $(`#${newPlace}`).addClass("uncovered");
+                    if (x - i != 0) {
+                      for (var j = x; j >= 0; j--) {
+                        if (gameMap[j][k] == " ") {
+                          let newNewPlace = j * gameMap[j].length + k;
+                          $(`#${newNewPlace}`).addClass("uncovered");
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    if (x - i != gameMap.length) {
+                      for (var j = x; j < gameMap.length; j++) {
+                        if (gameMap[j][k] == " ") {
+                          let newNewPlace = j * gameMap[j].length + k;
+                          $(`#${newNewPlace}`).addClass("uncovered");
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                  } else {
+                    break;
+                  }
+                }
+                if (y != gameMap[i].length) {
+                  console.log("bbb");
+                  for (var k = y; k < gameMap[i].length; k++) {
+                    if (gameMap[i][k] == " ") {
+                      let newPlace = i * gameMap[i].length + k;
+                      $(`#${newPlace}`).addClass("uncovered");
+                      if (x - i != 0) {
+                        for (var j = x; j >= 0; j--) {
+                          if (gameMap[j][k] == " ") {
+                            let newNewPlace = j * gameMap[j].length + k;
+                            $(`#${newNewPlace}`).addClass("uncovered");
+                          } else {
+                            break;
+                          }
+                        }
+                      }
+                      if (x - i != gameMap.length) {
+                        for (var j = x; j < gameMap.length; j++) {
+                          if (gameMap[j][k] == " ") {
+                            let newNewPlace = j * gameMap[j].length + k;
+                            $(`#${newNewPlace}`).addClass("uncovered");
+                          } else {
+                            break;
+                          }
+                        }
+                      }
+                    } else {
+                      break;
+                    }
+                  }
+                }
+              }
+            } else {
+              break;
+            }
+          }
+        }
+        if (x != gameMap.length) {
+          for (var i = x; i < gameMap.length; i++) {
+            if (gameMap[i][y] == " ") {
+              let place = i * gameMap[i].length + y;
+              $(`#${place}`).addClass("uncovered");
+              if (y != 0) {
+                console.log("ccc");
+                for (var k = y - 1; k >= 0; k--) {
+                  console.log(i + ", " + k);
+                  if (gameMap[i][k] == " ") {
+                    let newPlace = i * gameMap[i].length + k;
+                    $(`#${newPlace}`).addClass("uncovered");
+                    if (x - i != 0) {
+                      for (var j = x; j >= 0; j--) {
+                        if (gameMap[j][k] == " ") {
+                          let newNewPlace = j * gameMap[j].length + k;
+                          $(`#${newNewPlace}`).addClass("uncovered");
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    if (x - i != gameMap.length) {
+                      for (var j = x; j < gameMap.length; j++) {
+                        if (gameMap[j][k] == " ") {
+                          let newNewPlace = j * gameMap[j].length + k;
+                          $(`#${newNewPlace}`).addClass("uncovered");
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                  } else {
+                    break;
+                  }
+                }
+                if (y != gameMap[i].length) {
+                  console.log("ddd");
+                  for (var k = y; k < gameMap[i].length; k++) {
+                    if (gameMap[i][k] == " ") {
+                      let newPlace = i * gameMap[i].length + k;
+                      $(`#${newPlace}`).addClass("uncovered");
+                      if (x - i != 0) {
+                        for (var j = x; j >= 0; j--) {
+                          if (gameMap[j][k] == " ") {
+                            let newNewPlace = j * gameMap[j].length + k;
+                            $(`#${newNewPlace}`).addClass("uncovered");
+                          } else {
+                            break;
+                          }
+                        }
+                      }
+                      if (x - i != gameMap.length) {
+                        for (var j = x; j < gameMap.length; j++) {
+                          if (gameMap[j][k] == " ") {
+                            let newNewPlace = j * gameMap[j].length + k;
+                            $(`#${newNewPlace}`).addClass("uncovered");
+                          } else {
+                            break;
+                          }
+                        }
+                      }
+                    } else {
+                      break;
+                    }
+                  }
+                }
+              }
+            } else {
+              break;
+            }
+          }
+        }
+      }
+      */
+
+         function winDetect() {
+            let mapTotal = 0;
+            let gameTotal = 0;
+
+            for (var i = 0; i < gameBoard.length; i++) {
+               for (var k = 0; k < gameBoard[i].length; k++) {
+                  if (gameBoard[i][k] == " ") {
+                     gameTotal += 10;
+                  } else if (gameBoard[i][k] != "`") {
+                     gameTotal += gameBoard[i][k];
+                  }
+
+                  if (gameMap[i][k] == " ") {
+                     mapTotal += 10;
+                  } else if (gameMap[i][k] != "*") {
+                     mapTotal += gameMap[i][k];
+                  }
+               }
+            }
+
+            if (gameTotal == mapTotal) {
+               alert("You Win!");
+            }
+         }
+
+         function numberToWords(number) {
+            var digit = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+            var elevenSeries = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
+            var countingByTens = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+            var shortScale = ["", "thousand", "million", "billion", "trillion"];
+
+            number = number.toString();
+            number = number.replace(/[\, ]/g, "");
+            if (number != parseFloat(number)) return "not a number";
+            var x = number.indexOf(".");
+            if (x == -1) x = number.length;
+            if (x > 15) return "too big";
+            var n = number.split("");
+            var str = "";
+            var sk = 0;
+            for (var i = 0; i < x; i++) {
+               if ((x - i) % 3 == 2) {
+                  if (n[i] == "1") {
+                     str += elevenSeries[Number(n[i + 1])] + " ";
+                     i++;
+                     sk = 1;
+                  } else if (n[i] != 0) {
+                     str += countingByTens[n[i] - 2] + " ";
+                     sk = 1;
+                  }
+               } else if (n[i] != 0) {
+                  str += digit[n[i]] + " ";
+                  if ((x - i) % 3 == 0) str += "hundred ";
+                  sk = 1;
+               }
+               if ((x - i) % 3 == 1) {
+                  if (sk) str += shortScale[(x - i - 1) / 3] + " ";
+                  sk = 0;
+               }
+            }
+            if (x != number.length) {
+               var y = number.length;
+               str += "point ";
+               for (var i = x + 1; i < y; i++) str += digit[n[i]] + " ";
+            }
+            str = str.replace(/\number+/g, " ");
+            return str.trim();
+         }
+      </script>
+   </body>
+</html>

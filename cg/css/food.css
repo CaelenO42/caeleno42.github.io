@@ -1,0 +1,187 @@
+@font-face {
+  font-family: "Minecraft";
+  src: url("../fonts/MinecraftRegular.otf");
+}
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #666;
+}
+
+[data-quantity] {
+  width: 100%;
+  max-width: 10rem;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-shadow: 0 10px 65px -10px rgba(0, 0, 0, 0.25);
+  font-family: "Minecraft";
+}
+[data-quantity] legend {
+  display: none;
+}
+[data-quantity] input {
+  font-size: 18px;
+  height: 2rem;
+  padding: 0 3rem;
+  border: 0;
+  background: #fff;
+  color: #222;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+[data-quantity] input:focus {
+  outline: none;
+  box-shadow: 0 5px 55px -10px rgba(0, 0, 0, 0.2), 0 0 4px #3fb0ff; /* Allows border radius on focus */
+}
+[data-quantity] input[type=number]::-webkit-inner-spin-button,
+[data-quantity] input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+[data-quantity] input[type=number] {
+  -moz-appearance: textfield;
+}
+[data-quantity] button {
+  position: absolute;
+  height: 2rem;
+  border: 0;
+  width: 3rem;
+}
+[data-quantity] button.add {
+  margin-left: -3rem;
+  border-radius: 0px;
+}
+
+img.icon {
+  width: auto;
+  height: 2rem;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  margin-top: -4px;
+}
+
+div.item_container {
+  width: 1030px;
+  height: 630px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 20px;
+}
+div.item_container .item {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 470px;
+  margin: 5px 0px;
+}
+div.item_container .item span {
+  padding: 0px 10px;
+  flex-grow: 1;
+  font-family: "Minecraft";
+}
+
+div.point_totals {
+  margin: 30px 45px;
+}
+div.point_totals .user {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin: 10px 0px;
+  width: fit-content;
+}
+div.point_totals .user img {
+  height: 2rem;
+  width: auto;
+}
+div.point_totals .user a {
+  padding: 0px 10px;
+  flex-grow: 1;
+  font-family: "Minecraft";
+  color: black;
+  transition: 0.25s;
+}
+div.point_totals .user a:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+div.controls {
+  margin: 0px 40px;
+}
+div.controls input {
+  width: 300px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  padding: 8px 10px;
+  font-family: "Minecraft";
+  font-size: 16px;
+}
+div.controls button {
+  box-sizing: border-box;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  background-color: #ccc;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: 0.5s;
+  font-family: "Minecraft";
+  font-size: 16px;
+  margin-left: 10px;
+}
+div.controls button:hover {
+  background-color: #aaa;
+  border: 2px solid #888;
+}
+
+div.info_background {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+div.info_background .info {
+  width: 90vw;
+  height: 90vh;
+  z-index: 3;
+  background-color: #666;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+div.info_background .info .item {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 470px;
+  margin: 10px;
+}
+div.info_background .info .item span {
+  padding: 0px 10px;
+  flex-grow: 1;
+  font-family: "Minecraft";
+}
+div.info_background .info .item p {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  font-family: "Minecraft";
+}
+
+/*# sourceMappingURL=food.css.map */
