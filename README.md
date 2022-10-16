@@ -1,9 +1,9 @@
 <h1 align="center">caeleno42.github.io</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/github/repo-size/CaelenO42/dark-mode" />
-  <img src="https://img.shields.io/github/languages/top/CaelenO42/dark-mode"  />
-  <img src="https://img.shields.io/github/last-commit/CaelenO42/dark-mode" >
+  <img src="https://img.shields.io/github/repo-size/CaelenO42/caeleno42.github.io" />
+  <img src="https://img.shields.io/github/languages/top/CaelenO42/caeleno42.github.io"  />
+  <img src="https://img.shields.io/github/last-commit/CaelenO42/caeleno42.github.io" >
 </p>
 
 <p align="center">
