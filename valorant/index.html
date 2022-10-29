@@ -3,7 +3,7 @@
    <head>
       <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-      <title>CaelenO42 | &lt;valorant\&gt;</title>
+      <title>C42 | &lt;valorant\&gt;</title>
       <link rel="icon" href="../images/favicon.png" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,6 +11,26 @@
       <link rel="stylesheet" type="text/css" href="css/valorant.css" />
    </head>
    <body>
+      <img src="images/agents/astra.png" style="display: none" />
+      <img src="images/agents/breach.png" style="display: none" />
+      <img src="images/agents/brimstone.png" style="display: none" />
+      <img src="images/agents/chamber.png" style="display: none" />
+      <img src="images/agents/cypher.png" style="display: none" />
+      <img src="images/agents/fade.png" style="display: none" />
+      <img src="images/agents/harbor.png" style="display: none" />
+      <img src="images/agents/jett.png" style="display: none" />
+      <img src="images/agents/kayo.png" style="display: none" />
+      <img src="images/agents/killjoy.png" style="display: none" />
+      <img src="images/agents/neon.png" style="display: none" />
+      <img src="images/agents/omen.png" style="display: none" />
+      <img src="images/agents/phoenix.png" style="display: none" />
+      <img src="images/agents/raze.png" style="display: none" />
+      <img src="images/agents/reyna.png" style="display: none" />
+      <img src="images/agents/sage.png" style="display: none" />
+      <img src="images/agents/skye.png" style="display: none" />
+      <img src="images/agents/sova.png" style="display: none" />
+      <img src="images/agents/viper.png" style="display: none" />
+      <img src="images/agents/yoru.png" style="display: none" />
       <div class="background brimstone"></div>
       <div class="background phoenix"></div>
       <div class="background sage"></div>
@@ -34,48 +54,42 @@
       <section class="content">
          <section class="agent">
             <img class="char_img" />
+            <p class="agent_name"></p>
+            <p class="agent_type"></p>
          </section>
-         <section class="agent_info_mobile">
+         <!-- <section class="agent_info_mobile">
             <div>
                <p class="agent_name"></p>
                <p class="agent_type"></p>
             </div>
-         </section>
+         </section> -->
          <section class="weapon">
-            <div>
-               <img class="weapon_img" />
-               <span class="weapon_name"></span>
-            </div>
+            <img class="weapon_img" />
+            <span class="weapon_name"></span>
          </section>
          <section class="strat">
-            <div>
-               <span class="strat_title"></span>
-               <span class="strat_desc"></span>
-            </div>
+            <span class="strat_title"></span>
+            <span class="strat_desc"></span>
          </section>
          <section class="info">
-            <div>
-               <h1>Instructions</h1>
-               <p>Click the boxes or use keyboard keys to randomize different settings:</p>
-               <p>'1' - Random Agent<br />'2' - Random Weapon (All)<br />'3' - Random Weapon (Primary)<br />'4' - Random Weapon (Secondary)<br />'5' - Random Strat</p>
-               <button onclick="window.location.href = '../index.html'">Back to Home</button>
-            </div>
+            <h1>Instructions</h1>
+            <p>Click the boxes or use keyboard keys to randomize different settings:</p>
+            <p>'1' - Random Agent<br />'2' - Random Weapon (All)<br />'3' - Random Weapon (Primary)<br />'4' - Random Weapon (Secondary)<br />'5' - Random Strat</p>
+            <button onclick="window.location.href = '../index.html'">Back to Home</button>
          </section>
-         <section class="agent_info">
+         <!-- <section class="agent_info">
             <div>
                <p class="agent_name"></p>
                <p class="agent_type"></p>
             </div>
-         </section>
+         </section> -->
          <section class="credits">
-            <div>
-               <h1>Credits</h1>
-               <p>Credit for all of the images goes to <a target="_blank" href="https://www.riotgames.com/en">Riot Games</a> and <a target="_blank" href="https://playvalorant.com/en-us/">VALORANT</a>.</p>
-               <p>
-                  Credit for the random strats and descriptions belongs to <a target="_blank" href="https://www.reddit.com/user/Kearnerr/">u/Kearnerr</a> and his Reddit post
-                  <a target="_blank" href="https://www.reddit.com/r/VALORANT/comments/k8rebf/unofficial_guide_to_the_pick_my_strat_spray/">here</a>
-               </p>
-            </div>
+            <h1>Credits</h1>
+            <p>Credit for all of the images goes to <a target="_blank" href="https://www.riotgames.com/en">Riot Games</a> and <a target="_blank" href="https://playvalorant.com/en-us/">VALORANT</a>.</p>
+            <p>
+               Credit for the random strats and descriptions belongs to <a target="_blank" href="https://www.reddit.com/user/Kearnerr/">u/Kearnerr</a> and his Reddit post
+               <a target="_blank" href="https://www.reddit.com/r/VALORANT/comments/k8rebf/unofficial_guide_to_the_pick_my_strat_spray/">here</a>
+            </p>
          </section>
       </section>
       <script>
@@ -183,10 +197,6 @@
                agentTypeClass.html(agent.type.toLowerCase());
                agentTypeClass.fadeIn("500", "swing");
             });
-
-            $(".name").html(agent.name);
-            $(".number").html(agent.number);
-            $(".type").html(agent.type);
 
             $(".brimstone, .phoenix, .sage, .sova, .viper, .cypher, .reyna, .killjoy, .breach, .omen, .jett, .raze, .skye, .yoru, .astra, .kayo, .chamber, .neon, .fade, .harbor").css("opacity", 0);
             $(`.${agent.name.toLowerCase()}`).css("opacity", 1);

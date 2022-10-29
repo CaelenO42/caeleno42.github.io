@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link href="https://pagecdn.io/lib/easyfonts/fonts.css" rel="stylesheet" />
+      <link rel="icon" href="../images/favicon.png" />
+      <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+      <link href="https://cdn.jsdelivr.net/gh/alphardex/aqua.css/dist/aqua.min.css" />
+      <link type="text/css" rel="stylesheet" href="css/timer.css" />
+      <title>C42 | &lt;timer\&gt;</title>
+   </head>
+   <body>
+      <section class="inputs">
+         <span>Font</span>
+         <input placeholder="Font" id="font" value="Arial" type="text" />
+         <span>Time</span>
+         <input placeholder="00:00:05:00" id="time" value="05:00" type="text" />
+         <span>Color</span>
+         <input id="color" type="color" />
+         <span>Background Color</span>
+         <input id="background-color" type="color" value="#ffffff" />
+         <div class="form-check">
+            <label for="transparent" class="form-check-label">Transparent</label>
+            <input type="checkbox" name="transparent" id="transparent" class="form-check-input" checked />
+         </div>
+         <span>Border Radius</span>
+         <input id="border-radius" type="number" value="0" />
+      </section>
+      <section class="data">
+         <code id="link">Link</code>
+         <code id="size">Size</code>
+      </section>
+      <section class="buttons">
+         <button onclick="saveData();">Preview</button>
+         <button onclick="generateLink();">Generate Link</button>
+         <button onclick="copy('#link')">Copy Link to Clipboard</button>
+         <button onclick="resetData();">Reset Fields</button>
+         <button onclick="window.location.href = '../index.html'">Back to Home</button>
+      </section>
+      <section class="preview">
+         <span id="timer">00:00</span>
+      </section>
+      <section class="lifesize">
+         <span id="bigtimer">00:00</span>
+      </section>
+      <section class="info">
+         <h1>Info</h1>
+         <p>
+            Ever needed a timer for your stream? Here you can make a custom timer for any duration (max unit is days), color, background color, border radius, and font! After you have a preview you like, click 'Generate Link' and paste the link into
+            an OBS browser source with the width and height specified and enjoy your new timer.
+         </p>
+         <p>
+            Note: Not all fonts are created equal and some have a lot of spacing at the top or bottom, so your results may vary. You can choose any font you can find in the <a href="https://fonts.google.com/" target="_blank">Google Fonts</a> library.
+         </p>
+         <p>
+            <strong
+               >If you have not previewed the font before clicking 'Generate Link' an invalid width might display due to the font not being loaded yet. To fix this, just hit 'Generate Link' again after the font loads or just preview the timer
+               first.</strong
+            >
+         </p>
+      </section>
+      <section class="copy">
+         <span>Link Copied!</span>
+      </section>
+      <script>
+         var data = {
+            time: 300000,
+            color: "#000",
+            backgroundColor: "transparent",
+            font: "Arial",
+            borderRadius: "0px",
+            width: "1200px",
+         };
+
+         preview();
+
+         function fontTest() {
+            let font = $("#font").val();
+
+            $("p").css("font-family", `'${font}'`);
+         }
+
+         function saveData() {
+            data.font = $("#font").val();
+
+            let time = $("#time").val().split(":");
+            for (var i = 0; i < time.length; i++) {
+               time[i] = parseInt(time[i]);
+               console.log(time[i]);
+            }
+            let timeLen = time.length;
+            let totalTime = 0;
+            if (timeLen == 4) {
+               totalTime = (((time[0] * 24 + time[1]) * 60 + time[2]) * 60 + time[3]) * 1000;
+            } else if (timeLen == 3) {
+               totalTime = ((time[0] * 60 + time[1]) * 60 + time[2]) * 1000;
+            } else if (timeLen == 2) {
+               totalTime = (time[0] * 60 + time[1]) * 1000;
+            } else if (timeLen == 1) {
+               totalTime = time[0] * 1000;
+            }
+            data.time = totalTime;
+
+            data.color = $("#color").val();
+
+            if ($("#transparent").prop("checked")) {
+               data.backgroundColor = "transparent";
+            } else {
+               data.backgroundColor = $("#background-color").val();
+            }
+
+            data.borderRadius = `${$("#border-radius").val()}px`;
+
+            preview();
+         }
+         // clientWidth
+         // clientHeight
+
+         function preview() {
+            $(".preview").css({
+               "font-family": `'${data.font}'`,
+               color: data.color,
+               "background-color": data.backgroundColor,
+               "border-radius": data.borderRadius,
+            });
+
+            $(".lifesize").css({
+               "font-family": `'${data.font}'`,
+               color: data.color,
+               "background-color": data.backgroundColor,
+               "border-radius": data.borderRadius,
+            });
+
+            let time = $("#time").val().split(":");
+            let bigtime = $("#time").val().split(":");
+
+            for (var i = 0; i < time.length; i++) {
+               if (time[i].length == 1) {
+                  time[i] = `0${time[i]}`;
+               }
+            }
+
+            for (var i = 0; i < bigtime.length; i++) {
+               bigtime[i] = "00";
+            }
+
+            $("#timer").html(time.join(":"));
+
+            $("#bigtimer").html(bigtime.join(":"));
+         }
+
+         function generateLink() {
+            saveData();
+
+            $(".lifesize").css("display", "inherit");
+            let width = $(".lifesize")[0].clientWidth;
+            let height = $(".lifesize")[0].clientHeight;
+            $(".lifesize").delay(250);
+            $(".lifesize").css("display", "none");
+
+            data.width = `${width}px`;
+
+            let stringData = JSON.stringify(data);
+            let encryptData = btoa(stringData);
+
+            $("#link").html(`https://caeleno42.github.io/timer/timer.html#${encryptData}`);
+
+            $("#size").html(`Width: ${width}, Height: ${height}`);
+         }
+
+         function resetData() {
+            data = {
+               time: 300000,
+               color: "#000",
+               backgroundColor: "transparent",
+               font: "Arial",
+               borderRadius: "0px",
+               width: "1200px",
+            };
+
+            preview();
+
+            $("span").html("05:00");
+            $("#font").val("Arial");
+            $("#color").val("#000000");
+            $("#background-color").val("#ffffff");
+            $("#transparent").prop("checked", true);
+            $("#border-radius").val(0);
+         }
+
+         function copy(selector) {
+            var $temp = $("<div>");
+            $("body").append($temp);
+            $temp
+               .attr("contenteditable", true)
+               .html($(selector).html())
+               .select()
+               .on("focus", function () {
+                  document.execCommand("selectAll", false, null);
+               })
+               .focus();
+            document.execCommand("copy");
+            $temp.remove();
+
+            $(".copy").fadeIn(500).delay(1000).fadeOut(500);
+         }
+      </script>
+   </body>
+</html>

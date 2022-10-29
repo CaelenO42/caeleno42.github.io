@@ -1,389 +1,33 @@
-@font-face {
-  font-family: "Fira Code";
-  src: url(../fonts/FiraCode-Light.ttf);
-  font-weight: 300;
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
 }
-@font-face {
-  font-family: "Fira Code";
-  src: url(../fonts/FiraCode-Regular.ttf);
-  font-weight: 400;
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
 }
-@font-face {
-  font-family: "Fira Code";
-  src: url(../fonts/FiraCode-Medium.ttf);
-  font-weight: 500;
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  width: 8px;
+  margin: 1px;
+  border-radius: 100px;
 }
-@font-face {
-  font-family: "Fira Code";
-  src: url(../fonts/FiraCode-SemiBold.ttf);
-  font-weight: 600;
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
-@font-face {
-  font-family: "Fira Code";
-  src: url(../fonts/FiraCode-Bold.ttf);
-  font-weight: 700;
-}
+
 body {
   margin: 0px;
-  padding: 0px;
   background-color: #000d18;
-  overflow-x: hidden;
-  width: 100vw;
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
-}
-body::-webkit-scrollbar {
-  display: none;
-}
-
-nav {
-  background-color: #000d18;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-}
-nav button {
-  float: left;
-  display: none !important;
-}
-nav button .hamburger-inner {
-  background-color: white !important;
-}
-nav button .hamburger-inner::before, nav button .hamburger-inner::after {
-  background-color: white !important;
-}
-nav img {
-  height: 60px;
-  float: left;
-  margin: 7px 10px;
-  user-drag: none;
-  -webkit-user-drag: none;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-}
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-}
-nav ul li {
-  float: left;
-  height: 100%;
-  font-size: 16px;
-  line-height: 20px;
-  display: inherit;
-}
-nav ul li a {
-  display: block;
-  text-align: center;
-  padding: 20px 16px;
-  text-decoration: none;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  transition: background-color 0.35s, color 0.35s;
-}
-nav ul li a:hover {
-  background-color: rgba(255, 255, 255, 0.12);
-}
-nav ul li a:hover.youtube, nav ul li a:active.youtube {
-  color: #f10002 !important;
-}
-nav ul li a:hover.twitch, nav ul li a:active.twitch {
-  color: #8a43f2 !important;
-}
-nav ul li a:hover.twitter, nav ul li a:active.twitter {
-  color: #1c99e6 !important;
-}
-nav ul li a:hover.github, nav ul li a:active.github {
-  color: #aaa !important;
-}
-nav ul li a:hover.coffee, nav ul li a:active.coffee {
-  color: #f2d200 !important;
-}
-nav ul li.right {
-  float: right;
-}
-nav ul.mobile {
-  display: inherit !important;
-  animation: anim 0.3s ease-in-out;
-  transform: scale(1);
-  opacity: 1;
-}
-
-@media screen and (max-width: 600px) {
-  nav button,
-nav img,
-nav ul li.right,
-nav ul li {
-    float: none;
-  }
-  nav img {
-    position: relative;
-    margin: 0px;
-    top: 8px;
-    user-drag: none;
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-  }
-  nav button {
-    display: inline-block !important;
-    position: relative;
-    top: -8px;
-  }
-  li.right {
-    width: 15vw;
-    display: inline-block;
-    margin: 0px 2.1vw;
-  }
-  ul {
-    display: none !important;
-  }
-  section div img.pfp {
-    width: 40vw;
-  }
-}
-@keyframes anim {
-  0% {
-    display: none;
-    opacity: 0;
-  }
-  1% {
-    display: block;
-    opacity: 0;
-    transform: scale(0);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-section {
-  width: 100vw;
-  padding: 0px;
-  margin: 0px;
-  display: flex;
-  align-items: center;
-  position: relative;
-  top: 0px;
-  height: fit-content;
-  color: white;
-}
-section.landing {
-  background-color: #00386a;
-}
-section.stuff {
-  background-color: #003361;
-}
-section.valorant {
-  background-color: #002e58;
-}
-section.minesweeper {
-  background-color: #002a4f;
-}
-section.meter {
-  background-color: #002546;
-}
-section.wordle {
-  background-color: #00203e;
-}
-section.soon {
-  background-color: #001c35;
-}
-section.support {
-  background-color: #00172d;
-}
-section h1 {
-  padding: 0px;
-  margin: 0px;
-  font-family: "Fira Code";
-}
-section p {
-  font-family: "Fira Code";
-  font-weight: 300;
-}
-section p a {
-  color: #a0a0a0 !important;
-}
-section p a:hover {
-  color: #7b99a9 !important;
-}
-section p a:active {
-  color: #5e92ae !important;
-}
-section p a:visited {
-  color: #a0a0a0;
-}
-section div {
-  display: inline-block;
-}
-section div.left {
-  padding: 2vw;
-  width: 76vw;
-}
-section div.right {
-  padding: 1vw;
-}
-section .pfp {
-  width: 20vw;
-}
-section .val_img {
-  width: 15vw;
-}
-section .wordle_img {
-  width: 15vw;
-  height: auto;
-  position: relative;
-  padding: 10px;
-}
-section .mine_img {
-  width: 15vw;
-  padding: 10px;
-  margin-top: -10px;
-}
-section i,
-section svg {
-  color: white;
-  margin: 25px;
-  user-drag: none;
-  -webkit-user-drag: none;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-}
-section button {
-  background-color: rgba(255, 255, 255, 0.08);
-  border: none;
-  border-radius: 20px;
-  padding: 12px 20px;
-  color: #ddd;
-  box-sizing: border-box;
-  margin: 8px 0px;
-  font-family: "Fira Code";
-  cursor: pointer;
-  font-size: 1em;
-  transition: background-color 0.25s;
-}
-section button:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-}
-section button.right {
-  float: right;
-}
-section img {
-  color: white;
-  user-drag: none;
-  -webkit-user-drag: none;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-}
-
-footer {
-  width: 100vw;
-  height: 90px;
-  background-color: #000d18;
-  margin: 0px;
-  padding: 0px;
-  display: grid;
-  align-items: center;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 0px;
-  color: white;
-  font-family: "Fira Code";
-  font-size: 0.75em;
-}
-footer div {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-footer div img {
-  height: 70px;
-  margin-left: 15px;
-  user-drag: none;
-  -webkit-user-drag: none;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-}
-footer div:last-child {
-  justify-content: center !important;
-}
-footer div:first-child {
-  grid-column: 1/3;
-  grid-row: 1/2;
-}
-footer div p {
-  margin-left: 20px;
-}
-footer div a {
-  color: #a0a0a0 !important;
-}
-footer div a:hover {
-  color: #7b99a9 !important;
-}
-footer div a:active {
-  color: #5e92ae !important;
-}
-footer div a:visited {
-  color: #a0a0a0;
-}
-footer div div {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: 0px;
-  text-align: center;
-  line-height: 40px;
-}
-footer div div a {
-  padding: 5px;
-  transition: color 0.25s;
-}
-footer div div a:hover.youtube, footer div div a:active.youtube {
-  color: #f10002 !important;
-}
-footer div div a:hover.twitch, footer div div a:active.twitch {
-  color: #8a43f2 !important;
-}
-footer div div a:hover.twitter, footer div div a:active.twitter {
-  color: #1c99e6 !important;
-}
-footer div div a:hover.github, footer div div a:active.github {
-  color: #ddd !important;
-}
-footer div div a:hover.coffee, footer div div a:active.coffee {
-  color: #f2d200 !important;
-}
-footer div div p {
-  font-weight: 600;
-  font-size: 1.2em;
-  text-align: center;
-  margin: 5px 0px 0px 5px;
-}
-footer div div .links {
-  display: inline;
-  margin-right: 10px;
-}
-
-.discord {
-  background-color: #001e39;
-  width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  max-width: 100vw;
   user-select: none;
   /* supported by Chrome and Opera */
   -webkit-user-select: none;
@@ -395,103 +39,275 @@ footer div div .links {
   -ms-user-select: none;
   /* Internet Explorer/Edge */
 }
-.discord div.tiles {
-  width: 80vh;
-  height: 80vh;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-.discord div.tiles .tile {
-  width: 24vh;
-  height: 24vh;
-  background-color: red;
+
+nav {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.2s ease;
-  flex-wrap: wrap;
-  flex-direction: column;
-  border-radius: 2px;
-  box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.9);
+  width: 100%;
+  border-bottom: rgba(255, 255, 255, 0.2);
 }
-.discord div.tiles .tile img {
-  width: 24vh;
-  height: auto;
-  border-radius: 2px;
+nav .nav-section {
+  padding: 2rem 2rem;
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-sizing: border-box;
+  align-items: center;
+}
+nav #logo-section {
+  flex-grow: 1;
+  justify-content: left;
+}
+nav #logo-section img {
+  height: 3rem;
+  width: auto;
   user-drag: none;
   -webkit-user-drag: none;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  -webkit-touch-callout: none;
+  filter: drop-shadow(3px 3px 4px black);
 }
-.discord div.tiles .tile a {
+nav #socials-section {
+  gap: 1rem;
+  flex-grow: 5;
+  justify-content: right;
+}
+nav #socials-section img,
+nav #socials-section svg {
+  height: 1.25rem;
+  width: auto;
+  position: relative;
+  filter: drop-shadow(1px 1px 2px black);
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
+}
+nav #socials-section a {
+  color: white;
+  position: relative;
+  padding: 8px 25px;
+  border-radius: 20px;
+  z-index: 2;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, filter 0.5s ease-in-out;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
+}
+nav #socials-section a#coffee > img {
+  filter: contrast(0) brightness(100) drop-shadow(1px 1px 2px black);
+}
+nav #socials-section a#curseforge > img {
+  filter: contrast(0) brightness(100) drop-shadow(1px 1px 2px black);
+}
+nav #socials-section a#modrinth > img {
+  filter: contrast(0) brightness(100) drop-shadow(1px 1px 2px black);
+}
+nav #socials-section a:hover#twitter {
+  background-color: rgba(29, 161, 242, 0.2);
+  color: #1da1f2;
+  filter: drop-shadow(0px 0px 3px #1da1f2);
+}
+nav #socials-section a:hover#youtube {
+  background-color: rgba(255, 0, 0, 0.2);
+  color: #ff0000;
+  filter: drop-shadow(0px 0px 3px #ff0000);
+}
+nav #socials-section a:hover#twitch {
+  background-color: rgba(145, 70, 255, 0.2);
+  color: #9146ff;
+  filter: drop-shadow(0px 0px 3px #9146ff);
+}
+nav #socials-section a:hover#github {
+  background-color: rgba(128, 128, 128, 0.2);
+  color: #fff;
+  filter: drop-shadow(0px 0px 3px #fff);
+}
+nav #socials-section a:hover#coffee {
+  background-color: rgba(255, 221, 0, 0.2);
+  filter: drop-shadow(0px 0px 3px);
+}
+nav #socials-section a:hover#coffee > img {
+  filter: drop-shadow(1px 1px 40px #ffdd00);
+}
+nav #socials-section a:hover#curseforge {
+  background-color: rgba(255, 165, 0, 0.2);
+  filter: drop-shadow(0px 0px 3px orange);
+}
+nav #socials-section a:hover#modrinth {
+  background-color: rgba(27, 217, 106, 0.2);
+  filter: drop-shadow(0px 0px 3px #1bd96a);
+}
+nav #socials-section a:hover#modrinth > img {
+  filter: drop-shadow(1px 1px 2px black);
+}
+
+main {
+  height: fit-content;
+  box-sizing: border-box;
+  padding: 4rem;
+}
+main a {
+  text-decoration: none;
+}
+main #cards {
+  display: flex;
+  max-width: 100vw;
   width: 100%;
-  height: 100%;
+  gap: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+main #cards .card-container {
+  transition: 0.25s transform;
+  height: 385px;
+  width: 275px;
+  border-radius: 10px;
+  margin: 0;
+  position: relative;
+  filter: drop-shadow(10px 10px 7px black);
+}
+main #cards .card-container:hover {
+  transform: scale(105%);
+}
+main #cards .card {
+  border-radius: 10px;
+  cursor: pointer;
+  height: 385px;
+  width: 275px;
+  transition: none;
+  position: relative;
+  margin: 0;
+}
+main #cards .card#valorant {
+  background: rgb(144, 21, 21);
+  background: linear-gradient(135deg, rgb(144, 21, 21) 0%, rgb(129, 21, 21) 25%, rgb(87, 9, 9) 49%, rgb(110, 11, 11) 72%, rgb(162, 37, 37) 100%);
+}
+main #cards .card#wordle {
+  background: rgb(222, 199, 86);
+  background: linear-gradient(135deg, rgb(222, 199, 86) 0%, rgb(99, 181, 86) 100%);
+}
+main #cards .card#timer {
+  background: rgb(30, 150, 231);
+  background: linear-gradient(90deg, rgb(30, 150, 231) 0%, rgb(0, 76, 139) 100%);
+}
+main #cards .card#meter, main #cards .card#minesweeper {
+  background: rgb(37, 37, 37);
+  background: linear-gradient(135deg, rgb(37, 37, 37) 0%, rgb(60, 60, 60) 100%);
+}
+main #cards .card#nether-coords {
+  background: rgb(14, 76, 199);
+  background: linear-gradient(135deg, rgb(14, 76, 199) 0%, rgb(79, 71, 179) 25%, rgb(97, 56, 142) 50%, rgb(184, 63, 198) 75%, rgb(219, 11, 195) 100%);
+}
+main #cards .card#advent-calendar {
+  background: rgb(13, 120, 0);
+  background: linear-gradient(135deg, rgb(13, 120, 0) 0%, rgb(58, 77, 107) 51%, rgb(124, 0, 0) 100%);
+}
+main #cards .card .card-inner {
+  background-color: black;
+  border-radius: inherit;
+  height: calc(100% - 2px);
+  width: calc(100% - 2px);
+  margin: 1px;
+  top: 1px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  overflow: hidden;
+  position: relative;
+  align-items: flex-end;
 }
-.discord div.tiles .tile svg {
-  font-size: 12vh;
-  margin: 0px;
-  padding: 0px;
-  color: rgba(255, 255, 255, 0.5);
-  transition: color 0.25s ease;
+main #cards .card .card-inner .card-img {
+  height: 100%;
+  width: auto;
+  filter: opacity(0.7);
+  position: absolute;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
 }
-.discord div.tiles .tile h1 {
-  margin: 0px;
-  padding: 0px;
-  font-size: 4vh;
-  font-family: "Fira Code";
-  color: rgba(255, 255, 255, 0.7);
-  transition: color 0.25s ease;
-}
-.discord div.tiles .tile p {
-  margin: 2px;
-  padding: 0px;
-  font-family: "Fira Code";
-  font-size: 1.65vh;
-  color: rgba(255, 255, 255, 0.6);
-  transition: color 0.25s ease;
-  text-align: center;
-}
-.discord div.tiles .tile:hover {
-  transform: scale(1.05);
-}
-.discord div.tiles .tile:hover svg {
-  color: white;
-}
-.discord div.tiles .tile:hover h1 {
-  color: white;
-}
-.discord div.tiles .tile:hover p {
+main #cards .card .card-inner h1 {
   color: rgba(255, 255, 255, 0.9);
+  font-family: "Rubik";
+  z-index: 3;
+  text-align: center;
+  text-shadow: 2px 2px 4px black;
 }
-.discord div.tiles .tile.pro {
-  background-color: #26a28d;
-}
-.discord div.tiles .tile.time {
-  background-color: #5e92ae;
-}
-.discord div.tiles .tile.th {
-  background-color: #9146ff;
-}
-.discord div.tiles .tile.yt {
-  background-color: red;
-}
-.discord div.tiles .tile.tr {
-  background-color: #1da1f2;
-}
-.discord div.tiles .tile.st {
-  background: rgb(9, 27, 63);
-  background: linear-gradient(180deg, rgb(9, 27, 63) 0%, rgb(19, 136, 185) 100%);
-}
-.discord div.tiles .tile.ws {
-  background-color: rgba(255, 255, 255, 0.12);
-}
-.discord div.tiles .tile.gh {
-  background-color: black;
+
+@media screen and (max-width: 720px) {
+  nav .nav-section {
+    padding: 1rem;
+  }
+  nav #logo-section {
+    flex-grow: 0;
+  }
+  nav #socials-section {
+    gap: 0.7rem;
+    padding: 0;
+    justify-content: center;
+  }
+  nav #socials-section a {
+    padding: 0.5rem;
+  }
+  nav #socials-section a#twitter {
+    background-color: rgba(29, 161, 242, 0.2);
+    color: #1da1f2;
+    filter: drop-shadow(0px 0px 3px #1da1f2);
+  }
+  nav #socials-section a#youtube {
+    background-color: rgba(255, 0, 0, 0.2);
+    color: #ff0000;
+    filter: drop-shadow(0px 0px 3px #ff0000);
+  }
+  nav #socials-section a#twitch {
+    background-color: rgba(145, 70, 255, 0.2);
+    color: #9146ff;
+    filter: drop-shadow(0px 0px 3px #9146ff);
+  }
+  nav #socials-section a#github {
+    background-color: rgba(128, 128, 128, 0.2);
+    color: #fff;
+    filter: drop-shadow(0px 0px 3px #fff);
+  }
+  nav #socials-section a#coffee {
+    background-color: rgba(255, 221, 0, 0.2);
+    filter: drop-shadow(0px 0px 3px);
+  }
+  nav #socials-section a#coffee > img {
+    filter: drop-shadow(1px 1px 40px #ffdd00);
+  }
+  nav #socials-section a#curseforge {
+    background-color: rgba(255, 165, 0, 0.2);
+    filter: drop-shadow(0px 0px 3px orange);
+  }
+  nav #socials-section a#modrinth {
+    background-color: rgba(27, 217, 106, 0.2);
+    filter: drop-shadow(0px 0px 3px #1bd96a);
+  }
+  nav #socials-section a#modrinth > img {
+    filter: drop-shadow(1px 1px 2px black);
+  }
+  nav #socials-section a:last-child {
+    margin-right: 0.5rem;
+  }
+  main #cards .card-container:last-child {
+    margin-bottom: 3rem;
+  }
+  main #cards .minesweeper {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

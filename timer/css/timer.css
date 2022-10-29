@@ -1,0 +1,243 @@
+body {
+  margin: 0px;
+  background-color: #000d18;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+section.inputs {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 10%;
+  gap: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Rubik";
+  font-size: 1rem;
+}
+section.inputs input[type=text], section.inputs input[type=number] {
+  border: 3px solid rgba(0, 136, 255, 0.25);
+  border-left-color: rgba(0, 136, 255, 0.5);
+  border-right-color: rgba(0, 136, 255, 0.5);
+  padding: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  background-color: transparent;
+  border-radius: 30px;
+  transition: all 0.25s ease-in-out;
+}
+section.inputs input[type=text]::placeholder, section.inputs input[type=number]::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+section.inputs input[type=text]:hover, section.inputs input[type=text]:focus-visible, section.inputs input[type=number]:hover, section.inputs input[type=number]:focus-visible {
+  color: rgba(255, 255, 255, 0.9);
+  outline: none;
+  border: 3px solid rgba(0, 136, 255, 0.45);
+  border-left-color: rgba(0, 136, 255, 0.7);
+  border-right-color: rgba(0, 136, 255, 0.7);
+}
+section.inputs input#font {
+  width: 14.2857142857%;
+}
+section.inputs input#time {
+  width: 9.0909090909%;
+}
+section.inputs input#border-radius {
+  width: 7.1428571429%;
+}
+section.inputs input[type=color] {
+  width: 5%;
+  padding: 0;
+  border-radius: 30px;
+  background-color: transparent;
+  height: 3rem;
+  border: none;
+}
+section.inputs input[type=checkbox] {
+  width: 25px;
+  height: 25px;
+}
+section.inputs label {
+  position: relative;
+  top: -0.39rem;
+}
+
+section.data {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 20px;
+  padding-top: 0px;
+}
+section.data code {
+  font-size: 1rem;
+  padding-bottom: 10px;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.9);
+  word-wrap: break-word;
+}
+
+section.buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 20px;
+}
+section.buttons button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+section.buttons button:hover {
+  color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+section.preview {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  font-size: 5em;
+  padding: 30px;
+  margin: 0px auto 20px;
+}
+
+section.lifesize {
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  font-size: 15em;
+  width: fit-content;
+  height: fit-content;
+  padding: 30px;
+  display: none;
+}
+
+section.info {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 136, 255, 0.04);
+  flex-direction: column;
+  margin: 0px auto;
+  box-sizing: border-box;
+  padding: 30px;
+  border-radius: 30px;
+  border: 3px solid rgba(0, 136, 255, 0.1);
+  transition: all 0.25s ease-in-out;
+}
+section.info:hover {
+  border: 3px solid rgba(0, 136, 255, 0.2);
+  background-color: rgba(0, 136, 255, 0.08);
+}
+section.info h1 {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: "Rubik";
+  font-size: 2rem;
+}
+section.info p {
+  margin: 10px 0px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Rubik";
+  font-size: 1rem;
+}
+section.info a {
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.25s ease-in-out;
+}
+section.info a:hover {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+}
+
+section.copy {
+  background-color: #002446;
+  width: 225px;
+  position: absolute;
+  top: 20px;
+  left: calc(50% - 112.5px);
+  padding: 15px;
+  border-radius: 30px;
+  border: 3px solid #00498d;
+  border-left-color: #006dd3;
+  border-right-color: #006dd3;
+  text-align: center;
+  font-family: "Rubik";
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.25em;
+  display: none;
+}
+
+@media screen and (max-width: 720px) {
+  body {
+    gap: 2rem;
+    height: fit-content;
+  }
+  section.inputs {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    height: fit-content;
+  }
+  section.inputs input[type=text],
+section.inputs input#font,
+section.inputs input[type=number],
+section.inputs input#time {
+    width: 80vw;
+  }
+  section.inputs input[type=color] {
+    width: 15vw;
+  }
+  section.inputs div.form-check {
+    width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  section.inputs div.form-check label {
+    top: 0;
+  }
+  section.inputs input#border-radius {
+    width: 50vw;
+  }
+  section.data {
+    padding-bottom: 0px;
+  }
+  section.buttons {
+    flex-wrap: wrap;
+    margin-bottom: 0;
+  }
+  section.buttons button {
+    width: 40vw;
+  }
+  section.preview {
+    margin-bottom: 0;
+  }
+  section.info {
+    margin-bottom: 20px;
+  }
+}
+
+/*# sourceMappingURL=timer.css.map */

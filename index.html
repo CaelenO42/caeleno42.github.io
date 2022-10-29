@@ -2,151 +2,115 @@
 <html>
    <head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>CaelenO42 | &lt;home\&gt;</title>
+      <title>CaelenO42</title>
       <link rel="icon" href="images/favicon.png" />
-      <link rel="stylesheet" type="text/css" href="css/hamburgers.css" />
       <link rel="stylesheet" type="text/css" href="css/style.css" />
       <script src="https://kit.fontawesome.com/56b07f00c9.js" crossorigin="anonymous"></script>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+         rel="stylesheet"
+      />
    </head>
    <body>
-      <header>
-         <nav>
-            <button class="hamburger hamburger--slider" type="button">
-               <span class="hamburger-box">
-                  <span class="hamburger-inner"></span>
-               </span>
-            </button>
-            <img src="images/logo-white.svg" alt="Logo" class="logo" />
-            <ul>
-               <li class="right">
-                  <a href="https://www.buymeacoffee.com/caeleno42" target="_blank" class="coffee"><i class="fa-solid fa-mug-hot fa-2x"></i></a>
-               </li>
-               <li class="right">
-                  <a href="https://github.com/CaelenO42" target="_blank" class="github"><i class="fa-brands fa-github fa-2x"></i></a>
-               </li>
-               <li class="right">
-                  <a href="https://twitter.com/CaelenO42" target="_blank" class="twitter"><i class="fa-brands fa-twitter fa-2x"></i></a>
-               </li>
-               <li class="right">
-                  <a href="https://www.twitch.tv/caeleno42" target="_blank" class="twitch"><i class="fa-brands fa-twitch fa-2x"></i></a>
-               </li>
-               <li class="right">
-                  <a href="https://www.youtube.com/channel/UCEDV8BArxgKQPtpM0bDBIuw" target="_blank" class="youtube"><i class="fa-brands fa-youtube fa-2x"></i></a>
-               </li>
-            </ul>
-         </nav>
-      </header>
-      <section class="landing">
-         <div class="container left">
-            <h1>&lt;hello/&gt;</h1>
-            <p>
-               I don't really know how you would have gotten here, but welcome to my website! Here is where you can find all of my cool (albeit random) code projects. If you like what you see, feel free to check back in for more stuff or support me
-               on one of my other platforms!
-            </p>
+      <nav>
+         <div id="logo-section" class="nav-section">
+            <img id="logo" alt="Logo" src="images/logo-white.svg" />
          </div>
-         <div class="container right">
-            <img src="images/pfp.png" alt="Photo" class="pfp" />
+         <div id="socials-section" class="nav-section">
+            <a href="https://twitter.com/CaelenO42" target="_blank" id="twitter"> <i class="fa-brands fa-twitter" style="top: 1px"></i> </a>
+            <a href="https://www.youtube.com/channel/UCEDV8BArxgKQPtpM0bDBIuw" target="_blank" id="youtube"> <i class="fa-brands fa-youtube" style="top: 1px"></i> </a>
+            <a href="https://www.twitch.tv/caeleno42" target="_blank" id="twitch"> <i class="fa-brands fa-twitch" style="top: 1.5px"></i> </a>
+            <a href="https://github.com/CaelenO42" target="_blank" id="github"> <i class="fa-brands fa-github" style="top: 1px"></i> </a>
+            <a href="https://www.buymeacoffee.com/caeleno42" target="_blank" id="coffee"> <img alt="Logo" src="images/buymeacoffee.svg" style="top: 2px" /> </a>
+            <a href="https://modrinth.com/user/CaelenO42" target="_blank" id="modrinth"> <img alt="Logo" src="images/modrinth.svg" style="top: 2px" /> </a>
          </div>
-      </section>
-      <section class="stuff">
-         <div class="container right">
-            <i class="fa-solid fa-file-lines fa-10x"></i>
-         </div>
-         <div class="container left">
-            <h1>&lt;stuff/&gt;</h1>
-            <p>The stuff I make is like super random and if you interested, you can check it out below! I hope you enjoy my collection of random projects! If you have any ideas or suggestions for future projects, feel free to reach out!</p>
-         </div>
-      </section>
-      <section class="valorant">
-         <div class="container left">
-            <h1>&lt;valorant/&gt;</h1>
-            <p>
-               This is a randomizer for VALORANT. You can randomize your agent, weapon, strategy or a combination of all three! Credit for all of the images goes to <a target="_blank" href="https://www.riotgames.com/en">Riot Games</a> and
-               <a target="_blank" href="https://playvalorant.com/en-us/">VALORANT</a>. Credit for the random strats and descriptions belongs to <a target="_blank" href="https://www.reddit.com/user/Kearnerr/">u/Kearnerr</a> and his Reddit post
-               <a target="_blank" href="https://www.reddit.com/r/VALORANT/comments/k8rebf/unofficial_guide_to_the_pick_my_strat_spray/">here</a>
-            </p>
-            <button onClick="window.location.href='./valorant/index.html'">Go to Randomizer</button>
-         </div>
-         <div class="container right">
-            <img src="images/valorant-logo.svg" alt="Photo" class="val_img" />
-         </div>
-      </section>
-      <section class="minesweeper">
-         <div class="container right">
-            <img src="images/mine.jpg" alt="Photo" class="mine_img" />
-         </div>
-         <div class="container left">
-            <h1>&lt;minesweeper/&gt;</h1>
-            <p>A game almost as classic on computers as solitare, this is my recreation of the iconic minesweeper from Windows XP. It includes 3 difficulty modes and a changable board size!</p>
-            <button onClick="window.location.href='./minesweeper/index.html'" class="right">Go to Minesweeper</button>
-         </div>
-      </section>
-      <section class="meter">
-         <div class="container left">
-            <h1>&lt;meter/&gt;</h1>
-            <p>If you know, you know...</p>
-            <button onClick="window.location.href='./meter/index.html'">Go to The Meter</button>
-         </div>
-         <div class="container right">
-            <i class="fa-solid fa-sliders fa-8x"></i>
-         </div>
-      </section>
-      <section class="wordle">
-         <div class="container right">
-            <img src="images/wordle.svg" alt="Photo" class="wordle_img" />
-         </div>
-         <div class="container left">
-            <h1>&lt;wordle/&gt;</h1>
-            <p>This is a solver for wordle. My friends kept bragging about how good they were and so I decided to make a system that you could put information into and in return get potential answers to the daily worlde.</p>
-            <button onClick="window.location.href='./wordle/index.html'" class="right">Go to Solver</button>
-         </div>
-      </section>
-      <section class="soon">
-         <div class="container left">
-            <h1>&lt;coming soon/&gt;</h1>
-            <p>There are more than 2 things now but more things are still coming soon; I just have to dream them up first! In the meantime I hope you enjoy what's here and stay tuned.</p>
-         </div>
-         <div class="container right">
-            <i class="fa-solid fa-screwdriver-wrench fa-8x"></i>
-         </div>
-      </section>
-      <section class="support">
-         <div class="container right">
-            <i class="fa-solid fa-share fa-8x"></i>
-         </div>
-         <div class="container left">
-            <h1>&lt;support/&gt;</h1>
-            <p>if you like what you see on the website consider supporting me elsewhere! All of my important links are on the top right of the navigation bar along with on the footer!</p>
-         </div>
-      </section>
-      <footer>
-         <div>
-            <img src="images/logo-white.svg" alt="Logo" />
-            <p>
-               <i class="fa-regular fa-copyright"></i> 2022 CaelenO42. Riot Games, VALORANT, and any associated logos are trademarks, service marks, and/or registered trademarks of
-               <a target="_blank" href="https://www.riotgames.com/en">Riot Games, Inc</a>. Wordle and any associated logos are trademarks, service marks, and/or registered trademarks of
-               <a target="_blank" href="https://www.nytimes.com/">The New York Times Company</a>.
-            </p>
-         </div>
-         <div>
-            <div>
-               <p>Socials</p>
-               <div class="links">
-                  <a href="https://www.youtube.com/channel/UCEDV8BArxgKQPtpM0bDBIuw" target="_blank" class="youtube"><i class="fa-brands fa-youtube fa-2x"></i></a>
-                  <a href="https://www.twitch.tv/caeleno42" target="_blank" class="twitch"><i class="fa-brands fa-twitch fa-2x"></i></a>
-                  <a href="https://twitter.com/CaelenO42" target="_blank" class="twitter"><i class="fa-brands fa-twitter fa-2x"></i></a>
-                  <a href="https://github.com/CaelenO42" target="_blank" class="github"><i class="fa-brands fa-github fa-2x"></i></a>
-                  <a href="https://www.buymeacoffee.com/caeleno42" target="_blank" class="coffee"><i class="fa-solid fa-mug-hot fa-2x"></i></a>
+      </nav>
+      <main>
+         <div id="cards">
+            <div class="card-container" onclick="window.location.href = 'valorant/index.html'">
+               <div class="card" id="valorant">
+                  <div class="card-inner">
+                     <img src="images/backgrounds/valorant.png" class="card-img" />
+                     <h1>Valorant Randomizer</h1>
+                  </div>
                </div>
             </div>
+            <div class="card-container" onclick="window.location.href = 'wordle/index.html'">
+               <div class="card" id="wordle">
+                  <div class="card-inner">
+                     <img src="images/backgrounds/wordle.png" class="card-img" />
+                     <h1>Wordle Solver</h1>
+                  </div>
+               </div>
+            </div>
+            <div class="card-container" onclick="window.location.href = 'timer/index.html'">
+               <div class="card" id="timer">
+                  <div class="card-inner">
+                     <img src="images/backgrounds/timer.png" class="card-img" />
+                     <h1>Stream Timer</h1>
+                  </div>
+               </div>
+            </div>
+            <div class="card-container" onclick="window.location.href = 'meter/index.html'">
+               <div class="card" id="meter">
+                  <div class="card-inner">
+                     <img src="images/backgrounds/meter.png" class="card-img" />
+                     <h1>The Meter</h1>
+                  </div>
+               </div>
+            </div>
+            <div class="card-container minesweeper" onclick="window.location.href = 'minesweeper/index.html'">
+               <div class="card" id="minesweeper">
+                  <div class="card-inner">
+                     <img src="images/backgrounds/minesweeper.png" class="card-img" />
+                     <h1>Minesweeper</h1>
+                  </div>
+               </div>
+            </div>
+            <div class="card-container">
+               <a href="https://modrinth.com/mod/nether-coords" target="_blank">
+                  <div class="card" id="nether-coords">
+                     <div class="card-inner">
+                        <img src="images/backgrounds/nether-coords.png" class="card-img" />
+                        <h1>Nether Coords</h1>
+                     </div>
+                  </div>
+               </a>
+            </div>
+            <div class="card-container">
+               <a href="https://www.spigotmc.org/resources/advent-calendar.105930/" target="_blank">
+                  <div class="card" id="advent-calendar">
+                     <div class="card-inner">
+                        <img src="images/backgrounds/advent.png" class="card-img" />
+                        <h1>Advent <br />Calendar Plugin</h1>
+                     </div>
+                  </div>
+               </a>
+            </div>
          </div>
-      </footer>
+      </main>
+
       <script>
-         var $hamburger = $(".hamburger");
-         $hamburger.on("click", function (e) {
-            $hamburger.toggleClass("is-active");
-            $("ul").toggleClass("mobile");
+         $(".card").on("mousemove", function (e) {
+            let x = (e.pageX - $(this).offset().left) / ($(this).outerWidth() / 2) - 1;
+            let y = (e.pageY - $(this).offset().top) / ($(this).outerHeight() / 2) - 1;
+
+            $(this).css("transform", `perspective(400px) rotate3d(${x}, ${y}, 0, 2deg)`);
+         });
+         $(".card").on("touchmove", function (e) {
+            let x = (e.pageX - $(this).offset().left) / ($(this).outerWidth() / 2) - 1;
+            let y = (e.pageY - $(this).offset().top) / ($(this).outerHeight() / 2) - 1;
+
+            $(this).css("transform", `perspective(400px) rotate3d(${x}, ${y}, 0, 2deg)`);
+         });
+         $(".card").mouseleave(function (e) {
+            $(this).css("transform", `none`);
+         });
+         $(".card").on("touchend", function (e) {
+            $(this).css("transform", `none`);
          });
       </script>
    </body>

@@ -1,0 +1,138 @@
+body {
+  margin: 0px;
+  background-color: #000d18;
+  height: 100vw;
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: "Rubik";
+  box-sizing: border-box;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+div.top-bar {
+  padding: 3rem 2rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+div.top-bar input {
+  padding: 1rem 2rem;
+}
+div.top-bar .input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  gap: 0.75rem;
+}
+div.top-bar .input .green {
+  padding: 0.5rem 0rem;
+  width: 18%;
+  font-family: "Rubik";
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #538d4e;
+  text-align: center;
+  border-radius: 5px 5px 0px 0px;
+  transition: all 0.25s ease-in-out;
+}
+div.top-bar .input .green:focus-visible, div.top-bar .input .green:hover {
+  outline: none;
+  background-color: rgba(83, 141, 78, 0.2);
+}
+div.top-bar .yellow {
+  padding: 0.5rem 0rem;
+  width: 18%;
+  font-family: "Rubik";
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #b59f3b;
+  text-align: center;
+  border-radius: 5px 5px 0px 0px;
+  transition: all 0.25s ease-in-out;
+}
+div.top-bar .yellow:focus-visible, div.top-bar .yellow:hover {
+  outline: none;
+  background-color: rgba(181, 159, 59, 0.2);
+}
+div.top-bar .yellow:focus-visible::placeholder, div.top-bar .yellow:hover::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+div.top-bar .yellow::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+div.top-bar .gray {
+  padding: 0.5rem 0rem;
+  width: 18%;
+  font-family: "Rubik";
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #3a3a3c;
+  text-align: center;
+  border-radius: 5px 5px 0px 0px;
+  transition: all 0.25s ease-in-out;
+}
+div.top-bar .gray:focus-visible, div.top-bar .gray:hover {
+  outline: none;
+  background-color: rgba(58, 58, 60, 0.2);
+}
+div.top-bar .gray:focus-visible::placeholder, div.top-bar .gray:hover::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+div.top-bar .gray::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+div.top-bar button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+div.top-bar button:hover {
+  color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+div.words {
+  padding: 1rem 2rem 2rem;
+}
+div.words p {
+  line-height: 1.3rem;
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media screen and (max-width: 720px) {
+  div.top-bar {
+    flex-direction: column;
+  }
+  div.top-bar .yellow,
+div.top-bar .gray,
+div.top-bar button {
+    width: 90%;
+  }
+  div.top-bar .input {
+    width: 90%;
+  }
+}
+
+/*# sourceMappingURL=wordle.css.map */

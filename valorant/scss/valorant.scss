@@ -39,7 +39,6 @@ body {
    margin: 0px;
    padding: 0px;
    background-color: #121212;
-   overflow: hidden;
 }
 
 div {
@@ -137,270 +136,487 @@ div {
    }
 }
 
-section {
-   transition: 1s width, 1s height;
-
-   &.content {
-      width: 100vw;
-      height: 100vh;
-      display: grid;
-      margin: 0px;
-      padding: 0px;
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 0px;
-      grid-template-columns: fit-content fit-content;
-   }
-
-   &:not(.content) {
-      border: 3px solid rgba(0, 0, 0, 0.25);
-   }
-
-   &.agent {
-      border-bottom: none;
-      height: 85vh;
-      width: fit-content;
-      display: flex;
-      vertical-align: middle;
-      align-content: center;
-      justify-content: center;
-      // background-color: red;
-      grid-row: 1 / 4;
-      width: 100%;
-
-      img {
-         &.char_img {
-            z-index: 3;
-            height: 100%;
-         }
-      }
-   }
-
-   &.weapon {
-      // background-color: orange;
-      height: 25vh;
-      height: 100%;
-      width: auto;
-      padding: 5px 5px;
-      text-align: center;
-      display: table;
-
-      div {
-         display: table-cell;
-         vertical-align: middle;
-
-         img {
-            filter: drop-shadow(10px 15px 10px rgba(0, 0, 0, 0.8));
-            max-height: 85%;
-            max-width: 100%;
-            object-fit: contain;
-            display: block;
-            margin: 0px auto;
-         }
-
-         span {
-            font-family: "Tungsten", sans-serif;
-            font-size: clamp(3rem, 6vw, 5rem);
-            display: block;
-            color: rgba(255, 255, 255, 0.9);
-         }
-      }
-   }
-
-   &.strat {
-      // background-color: yellow;
-      min-height: 10vh;
-      height: 100%;
-      width: auto;
-      padding: 10px 20px 20px;
-      display: table;
-
-      div {
-         display: table-cell;
-         vertical-align: middle;
-
-         span {
-            &.strat_title {
-               font-family: "Tungsten", sans-serif;
-               font-size: clamp(3rem, 6vw, 5rem);
-               display: block;
-               color: rgba(255, 255, 255, 0.9);
-            }
-            &.strat_desc {
-               font-family: "Ubuntu", sans-serif;
-               font-size: clamp(1rem, 2vw, 1.5rem);
-               color: rgba(255, 255, 255, 0.7);
-            }
-         }
-      }
-   }
-
-   &.info {
-      // background-color: blue;
-      height: 100%;
-      width: auto;
-      padding: 10px 20px;
-      display: table;
-      div {
-         display: table-cell;
-         vertical-align: middle;
-         h1 {
-            font-family: "Tungsten", sans-serif;
-            font-size: clamp(2rem, 5vw, 4rem);
-            display: block;
-            color: rgba(255, 255, 255, 0.9);
-            text-transform: uppercase;
-            margin: 0px;
-            padding: 0px;
-         }
-
-         p {
-            font-family: "Ubuntu", sans-serif;
-            font-size: clamp(1rem, 1vw, 2rem);
-            color: rgba(255, 255, 255, 0.7);
-            margin: 0px 0px 15px;
-            padding: 0px;
-         }
-
-         button {
-            background-color: rgba(255, 255, 255, 0.08);
-            border: none;
-            border-radius: 30px;
-            padding: 12px 20px;
-            color: #ddd;
-            box-sizing: border-box;
-            font-family: "Mark Pro";
-            cursor: pointer;
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            transition: background-color 0.25s;
-
-            &:hover {
-               background-color: rgba(255, 255, 255, 0.15);
-            }
-         }
-      }
-   }
-
-   &.agent_info,
-   &.agent_info_mobile {
-      // background-color: green;
-      height: 15vh;
-      width: auto;
-      border-top: none;
-      display: table;
-
-      div {
-         margin: 0px auto;
-         display: table-cell;
-         vertical-align: middle;
-         text-align: center;
-
-         p {
-            text-align: center;
-            padding: 0px;
-            margin: 0px;
-
-            &.agent_name {
-               font-family: "Tungsten", sans-serif;
-               font-size: clamp(5.5rem, 7vw, 7.9rem);
-               color: rgba(255, 255, 255, 0.9);
-               text-transform: uppercase;
-               position: relative;
-            }
-
-            &.agent_type {
-               font-family: "Mark Pro", sans-serif;
-               font-size: clamp(1rem, 2.5vw, 2rem);
-               color: rgba(255, 255, 255, 0.7);
-               font-variant: small-caps;
-               top: -20px;
-               position: relative;
-            }
-         }
-      }
-   }
-
-   &.credits {
-      height: 100%;
-      width: auto;
-      padding: 10px 20px;
-      display: table;
-      div {
-         display: table-cell;
-         vertical-align: middle;
-         h1 {
-            font-family: "Tungsten", sans-serif;
-            font-size: clamp(2rem, 5vw, 4rem);
-            display: block;
-            color: rgba(255, 255, 255, 0.9);
-            text-transform: uppercase;
-            margin: 0px;
-            padding: 0px;
-         }
-
-         p {
-            font-family: "Ubuntu", sans-serif;
-            font-size: clamp(1rem, 1vw, 2rem);
-            color: rgba(255, 255, 255, 0.7);
-            margin: 0px 0px 15px;
-            padding: 0px;
-         }
-
-         a {
-            transition: 0.5s color;
-            color: rgba(255, 255, 255, 0.3);
-
-            &:hover {
-               color: rgba(255, 255, 255, 0.5);
-            }
-         }
-      }
-   }
-
-   &.agent_info_mobile {
-      display: none;
-   }
-
-   &.credits {
-      // background-color: blue;
-      height: 15vh;
-      width: auto;
-   }
-}
-
-@media screen and (max-width: 850px) {
-   html {
-      height: 100vh;
-   }
-
-   body {
-      min-width: 100%;
-      min-height: 100vh;
-      overflow-y: scroll;
-   }
+section.content {
+   width: 100vw;
+   height: 100vh;
+   display: grid;
+   grid-template-columns: 60% 40%;
+   grid-template-rows: 28% 28% 28% 16%;
+   justify-content: center;
+   align-items: center;
 
    section {
-      &.content {
-         grid-template-columns: repeat(1, 1fr);
-         width: 100%;
-         .agent {
-            height: fit-content;
-            img {
-               width: 95vw;
-               height: auto !important;
-            }
+      border: 3px solid rgba(0, 0, 0, 0.2);
+      width: 100%;
+      height: 100%;
+   }
+
+   .agent {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-row: 1 / 5;
+      flex-direction: column;
+
+      img {
+         max-width: 100%;
+         max-height: 75%;
+         filter: drop-shadow(4px 4px 10px black);
+      }
+
+      p {
+         text-align: center;
+         padding: 0px;
+         margin: 0px;
+
+         &.agent_name {
+            font-family: "Tungsten", sans-serif;
+            font-size: clamp(4rem, 9vw, 10rem);
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            position: relative;
+            text-shadow: 2px 2px 30px black;
          }
 
-         .strat {
-            min-height: inherit;
+         &.agent_type {
+            font-family: "Mark Pro", sans-serif;
+            font-size: clamp(1rem, 3vw, 2rem);
+            color: rgba(255, 255, 255, 0.7);
+            font-variant: small-caps;
+            top: -1rem;
+            position: relative;
+            text-shadow: 2px 2px 20px black;
+         }
+      }
+   }
+
+   .weapon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      img {
+         max-width: 100%;
+         max-height: 80%;
+         width: auto;
+         height: auto;
+         filter: drop-shadow(4px 4px 10px black);
+      }
+
+      span {
+         font-family: "Tungsten", sans-serif;
+         font-size: clamp(2rem, 4vw, 5rem);
+         display: block;
+         color: rgba(255, 255, 255, 0.9);
+         position: relative;
+         top: -2rem;
+         text-shadow: 2px 2px 30px black;
+      }
+   }
+
+   .strat {
+      padding: 0px 20px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      span {
+         &.strat_title {
+            font-family: "Tungsten", sans-serif;
+            font-size: clamp(2rem, 5vw, 6.5rem);
+            display: block;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 2px 2px 30px black;
+         }
+         &.strat_desc {
+            font-family: "Ubuntu", sans-serif;
+            font-size: clamp(0.5rem, 1.5vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.7);
+            text-shadow: 2px 2px 20px black;
+         }
+      }
+   }
+
+   .info {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      h1 {
+         color: rgba(255, 255, 255, 0.9);
+         font-size: clamp(0.5rem, 4vw, 4rem);
+         font-family: "Tungsten", sans-serif;
+         margin: 0;
+         text-transform: uppercase;
+         text-shadow: 2px 2px 30px black;
+      }
+
+      p {
+         margin: 0;
+         font-family: "Ubuntu", sans-serif;
+         font-size: clamp(0.5rem, 1.5vw, 1rem);
+         color: rgba(255, 255, 255, 0.7);
+         text-shadow: 2px 2px 20px black;
+      }
+
+      button {
+         background-color: transparent;
+         border: none;
+         border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+         margin: 10px auto;
+         padding: 5px;
+         color: rgba(255, 255, 255, 0.7);
+         box-sizing: border-box;
+         font-family: "Mark Pro";
+         cursor: pointer;
+         font-size: clamp(1rem, 2vw, 1.5rem);
+         transition: all 0.25s ease-in-out;
+         max-width: 40%;
+         text-shadow: 2px 2px 20px black;
+
+         &:hover {
+            color: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+         }
+      }
+   }
+
+   .credits {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      h1 {
+         color: rgba(255, 255, 255, 0.9);
+         font-size: clamp(0.5rem, 4vw, 4rem);
+         font-family: "Tungsten", sans-serif;
+         margin: 0;
+         text-transform: uppercase;
+         text-shadow: 2px 2px 30px black;
+      }
+
+      p {
+         margin: 0;
+         font-family: "Ubuntu", sans-serif;
+         font-size: clamp(0.5rem, 1.5vw, 1rem);
+         color: rgba(255, 255, 255, 0.7);
+         text-shadow: 2px 2px 20px black;
+      }
+
+      a {
+         transition: 0.5s color;
+         color: rgba(255, 255, 255, 0.3);
+
+         &:hover {
+            color: rgba(255, 255, 255, 0.5);
+         }
+      }
+   }
+
+   .agent_info_mobile {
+      display: none;
+   }
+}
+
+@media screen and (max-width: 750px) {
+   section.content {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(70%, 5);
+
+      .weapon,
+      .info,
+      .credits,
+      .strat {
+         h1,
+         span.strat_title,
+         span.weapon_name {
+            font-size: 48px;
+            padding-top: 10px;
+         }
+
+         p,
+         span.strat_desc {
+            font-size: 16px;
+            padding-bottom: 10px;
          }
       }
 
-      &.agent_info_mobile {
-         display: inherit;
-      }
-
-      &.agent_info {
-         display: none;
+      .info {
+         h1,
+         p {
+            display: none;
+         }
       }
    }
 }
+
+// section {
+//    transition: 1s width, 1s height;
+
+//    &.content {
+//       width: 100vw;
+//       height: 100vh;
+//       display: grid;
+//       margin: 0px;
+//       padding: 0px;
+//       grid-template-columns: repeat(2, 1fr);
+//       grid-gap: 0px;
+//       grid-template-columns: fit-content fit-content;
+//    }
+
+//    &:not(.content) {
+//       border: 3px solid rgba(0, 0, 0, 0.25);
+//    }
+
+//    &.agent {
+//       border-bottom: none;
+//       height: 85vh;
+//       width: fit-content;
+//       display: flex;
+//       vertical-align: middle;
+//       align-content: center;
+//       justify-content: center;
+//       // background-color: red;
+//       grid-row: 1 / 4;
+//       width: 100%;
+
+//       img {
+//          &.char_img {
+//             z-index: 3;
+//             height: 100%;
+//          }
+//       }
+//    }
+
+//    &.weapon {
+//       // background-color: orange;
+//       height: 25vh;
+//       height: 100%;
+//       width: auto;
+//       padding: 5px 5px;
+//       text-align: center;
+//       display: table;
+
+//       div {
+//          display: table-cell;
+//          vertical-align: middle;
+
+//          img {
+//             filter: drop-shadow(10px 15px 10px rgba(0, 0, 0, 0.8));
+//             max-height: 85%;
+//             max-width: 100%;
+//             object-fit: contain;
+//             display: block;
+//             margin: 0px auto;
+//          }
+
+//          span {
+//             font-family: "Tungsten", sans-serif;
+//             font-size: clamp(3rem, 6vw, 5rem);
+//             display: block;
+//             color: rgba(255, 255, 255, 0.9);
+//          }
+//       }
+//    }
+
+//    &.strat {
+//       // background-color: yellow;
+//       min-height: 10vh;
+//       height: 100%;
+//       width: auto;
+//       padding: 10px 20px 20px;
+//       display: table;
+
+//       div {
+//          display: table-cell;
+//          vertical-align: middle;
+
+//          span {
+//             &.strat_title {
+//                font-family: "Tungsten", sans-serif;
+//                font-size: clamp(3rem, 6vw, 5rem);
+//                display: block;
+//                color: rgba(255, 255, 255, 0.9);
+//             }
+//             &.strat_desc {
+//                font-family: "Ubuntu", sans-serif;
+//                font-size: clamp(1rem, 2vw, 1.5rem);
+//                color: rgba(255, 255, 255, 0.7);
+//             }
+//          }
+//       }
+//    }
+
+//    &.info {
+//       // background-color: blue;
+//       height: 100%;
+//       width: auto;
+//       padding: 10px 20px;
+//       display: table;
+//       div {
+//          display: table-cell;
+//          vertical-align: middle;
+//          h1 {
+//             font-family: "Tungsten", sans-serif;
+//             font-size: clamp(2rem, 5vw, 4rem);
+//             display: block;
+//             color: rgba(255, 255, 255, 0.9);
+//             text-transform: uppercase;
+//             margin: 0px;
+//             padding: 0px;
+//          }
+
+//          p {
+//             font-family: "Ubuntu", sans-serif;
+//             font-size: clamp(1rem, 1vw, 2rem);
+//             color: rgba(255, 255, 255, 0.7);
+//             margin: 0px 0px 15px;
+//             padding: 0px;
+//          }
+
+//          button {
+//             background-color: rgba(255, 255, 255, 0.08);
+//             border: none;
+//             border-radius: 30px;
+//             padding: 12px 20px;
+//             color: #ddd;
+//             box-sizing: border-box;
+//             font-family: "Mark Pro";
+//             cursor: pointer;
+//             font-size: clamp(1rem, 2vw, 1.5rem);
+//             transition: background-color 0.25s;
+
+//             &:hover {
+//                background-color: rgba(255, 255, 255, 0.15);
+//             }
+//          }
+//       }
+//    }
+
+//    &.agent_info,
+//    &.agent_info_mobile {
+//       // background-color: green;
+//       height: 15vh;
+//       width: auto;
+//       border-top: none;
+//       display: table;
+
+//       div {
+//          margin: 0px auto;
+//          display: table-cell;
+//          vertical-align: middle;
+//          text-align: center;
+
+//          p {
+//             text-align: center;
+//             padding: 0px;
+//             margin: 0px;
+
+//             &.agent_name {
+//                font-family: "Tungsten", sans-serif;
+//                font-size: clamp(5.5rem, 7vw, 7.9rem);
+//                color: rgba(255, 255, 255, 0.9);
+//                text-transform: uppercase;
+//                position: relative;
+//             }
+
+//             &.agent_type {
+//                font-family: "Mark Pro", sans-serif;
+//                font-size: clamp(1rem, 2.5vw, 2rem);
+//                color: rgba(255, 255, 255, 0.7);
+//                font-variant: small-caps;
+//                top: -20px;
+//                position: relative;
+//             }
+//          }
+//       }
+//    }
+
+//    &.credits {
+//       height: 100%;
+//       width: auto;
+//       padding: 10px 20px;
+//       display: table;
+//       div {
+//          display: table-cell;
+//          vertical-align: middle;
+//          h1 {
+//             font-family: "Tungsten", sans-serif;
+//             font-size: clamp(2rem, 5vw, 4rem);
+//             display: block;
+//             color: rgba(255, 255, 255, 0.9);
+//             text-transform: uppercase;
+//             margin: 0px;
+//             padding: 0px;
+//          }
+
+//          p {
+//             font-family: "Ubuntu", sans-serif;
+//             font-size: clamp(1rem, 1vw, 2rem);
+//             color: rgba(255, 255, 255, 0.7);
+//             margin: 0px 0px 15px;
+//             padding: 0px;
+//          }
+
+//          a {
+//             transition: 0.5s color;
+//             color: rgba(255, 255, 255, 0.3);
+
+//             &:hover {
+//                color: rgba(255, 255, 255, 0.5);
+//             }
+//          }
+//       }
+//    }
+
+//    &.agent_info_mobile {
+//       display: none;
+//    }
+
+//    &.credits {
+//       // background-color: blue;
+//       height: 15vh;
+//       width: auto;
+//    }
+// }
+
+// @media screen and (max-width: 850px) {
+//    html {
+//       height: 100vh;
+//    }
+
+//    body {
+//       min-width: 100%;
+//       min-height: 100vh;
+//       overflow-y: scroll;
+//    }
+
+//    section {
+//       &.content {
+//          grid-template-columns: repeat(1, 1fr);
+//          width: 100%;
+//          .agent {
+//             height: fit-content;
+//             img {
+//                width: 95vw;
+//                height: auto !important;
+//             }
+//          }
+
+//          .strat {
+//             min-height: inherit;
+//          }
+//       }
+
+//       &.agent_info_mobile {
+//          display: inherit;
+//       }
+
+//       &.agent_info {
+//          display: none;
+//       }
+//    }
+// }

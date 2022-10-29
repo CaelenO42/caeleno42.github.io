@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link href="https://pagecdn.io/lib/easyfonts/fonts.css" rel="stylesheet" />
+      <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+      <title>C42 | &lt;timer\&gt;</title>
+      <style>
+         body {
+            text-align: left;
+            margin: 0px;
+            padding: 0px;
+            overflow: hidden;
+         }
+         #clockdiv {
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 15em;
+            width: fit-content;
+            height: fit-content;
+            padding: 30px;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="clockdiv"><span class="days"></span><span class="day_colon">:</span><span class="hours"></span><span class="hour_color">:</span><span class="minutes"></span><span class="colon">:</span><span class="seconds"></span></div>
+      <script>
+         data = {};
+         let encryptedData = window.location.hash.slice(1);
+         if (encryptedData == "") {
+            data = {
+               time: 300000,
+               color: "#000",
+               backgroundColor: "transparent",
+               font: "Arial",
+               borderRadius: "0px",
+               width: "1200px",
+            };
+         } else {
+            let stringData = atob(encryptedData);
+            data = JSON.parse(stringData);
+         }
+
+         if (data.time <= 59000) {
+            $(".days").css("display", "none");
+            $(".hours").css("display", "none");
+            $(".day_colon").css("display", "none");
+            $(".hour_color").css("display", "none");
+         } else if (data.time <= 3599000) {
+            $(".days").css("display", "none");
+            $(".hours").css("display", "none");
+            $(".day_colon").css("display", "none");
+            $(".hour_color").css("display", "none");
+         } else if (data.time <= 86399000) {
+            $(".days").css("display", "none");
+            $(".day_colon").css("display", "none");
+         }
+
+         let borderRad = parseInt(data.borderRadius);
+         borderRad *= 2;
+
+         $("#clockdiv").css({
+            "font-family": `'${data.font}'`,
+            color: data.color,
+            "background-color": data.backgroundColor,
+            "border-radius": `${borderRad}px`,
+            width: data.width,
+         });
+
+         function getTimeRemaining(endtime) {
+            const total = Date.parse(endtime) - Date.parse(new Date());
+            const seconds = Math.floor((total / 1000) % 60);
+            const minutes = Math.floor((total / 1000 / 60) % 60);
+            const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+            const days = Math.floor(total / (1000 * 60 * 60 * 24));
+
+            return {
+               total,
+               days,
+               hours,
+               minutes,
+               seconds,
+            };
+         }
+
+         function initializeClock(id, endtime) {
+            const clock = document.getElementById(id);
+            const daysSpan = clock.querySelector(".days");
+            const hoursSpan = clock.querySelector(".hours");
+            const minutesSpan = clock.querySelector(".minutes");
+            const secondsSpan = clock.querySelector(".seconds");
+
+            function updateClock() {
+               const t = getTimeRemaining(endtime);
+
+               daysSpan.innerHTML = t.days;
+               hoursSpan.innerHTML = ("0" + t.hours).slice(-2);
+               minutesSpan.innerHTML = ("0" + t.minutes).slice(-2);
+               secondsSpan.innerHTML = ("0" + t.seconds).slice(-2);
+
+               if (t.total <= 0) {
+                  clearInterval(timeinterval);
+               }
+            }
+
+            updateClock();
+            const timeinterval = setInterval(updateClock, 1000);
+         }
+
+         const deadline = new Date(Date.parse(new Date()) + data.time); //new Date()) + 1 * (24 * 1) * (60 * 5) * (60 * 1) * 1000);
+         initializeClock("clockdiv", deadline);
+      </script>
+   </body>
+</html>
