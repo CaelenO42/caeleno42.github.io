@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
    <head>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-4V9R8G4YT7"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag() {
+            dataLayer.push(arguments);
+         }
+         gtag("js", new Date());
+
+         gtag("config", "G-4V9R8G4YT7");
+      </script>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link href="https://pagecdn.io/lib/easyfonts/fonts.css" rel="stylesheet" />
       <link rel="icon" href="../images/favicon.png" />
@@ -35,7 +46,7 @@
          <button onclick="generateLink();">Generate Link</button>
          <button onclick="copy('#link')">Copy Link to Clipboard</button>
          <button onclick="resetData();">Reset Fields</button>
-         <button onclick="window.location.href = '../index.html'">Back to Home</button>
+         <button onclick="window.location.href = '../'">Back to Home</button>
       </section>
       <section class="preview">
          <span id="timer">00:00</span>

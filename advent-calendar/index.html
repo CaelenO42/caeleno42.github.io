@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!-- Google tag (gtag.js) -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4V9R8G4YT7"></script>
+   <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'G-4V9R8G4YT7');
+   </script>
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>CaelenO42</title>
+   <link rel="icon" href="images/favicon.png" />
+   <link rel="stylesheet" type="text/css" href="css/advent-calendar.css" />
+   <script src="https://kit.fontawesome.com/56b07f00c9.js" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet" />
+</head>
+<body>
+   <div class="advent-calendar">
+      <img src="#" class="icon" />
+      <p class="title"><span></span></p>
+      <p class="desc"><span></span></p>
+      <p class="downloads">downloads<span></span></p>
+      <p class="rating">rating
+      <div class="stars">
+         <i class="fa-solid fa-star 1"></i>
+         <i class="fa-solid fa-star 2"></i>
+         <i class="fa-solid fa-star 3"></i>
+         <i class="fa-solid fa-star 4"></i>
+         <i class="fa-solid fa-star 5"></i>
+      </div>
+      </p>
+      <p class="date">last updated<span></span></p>
+      <p class="versions">versions<span></span></p>
+      <p class="versions">get it on
+      <div class="links">
+         <a href="https://www.spigotmc.org/resources/advent-calendar.105930/" target="_blank">
+            <img src="images/spigot.png">
+            Spigot
+         </a>
+      </div>
+      </p>
+   </div>
+   <script>
+      var adventCalendar = {};
+
+      printData();
+
+      async function getData() {
+         await $.getJSON("https://api.spiget.org/v2/resources/105930", function (e) {
+            console.log(e);
+            adventCalendar = e;
+         });
+      }
+
+      async function printData() {
+         await getData();
+
+         $(".advent-calendar > .title > span").html(adventCalendar.name);
+         $(".advent-calendar > .desc > span").html(adventCalendar.tag);
+         $(".advent-calendar > .date > span").html(EpochToDate(adventCalendar.updateDate).toLocaleDateString());
+
+         for (var i = 1; i <= adventCalendar.rating.average; i++) {
+            $(`.advent-calendar > .stars > i.${i}`).addClass("color-star");
+            $(`.advent-calendar > .stars > svg.${i}`).addClass("color-star");
+         }
+
+         $(".advent-calendar > .icon").attr("src", `https://www.spigotmc.org/${adventCalendar.icon.url}`);
+
+         let adventVersions = "";
+         for (var i = 0; i < adventCalendar.testedVersions.length; i++) {
+            adventVersions += adventCalendar.testedVersions[i];
+            if (i != adventCalendar.testedVersions.length - 1) adventVersions += ", ";
+         }
+
+         $(".advent-calendar > .versions > span").html(adventVersions);
+         $(".advent-calendar > .downloads > span").html(numberWithCommas(adventCalendar.downloads));
+
+      }
+
+      function EpochToDate(epoch) {
+         if (epoch < 10000000000) epoch *= 1000; // convert to milliseconds (Epoch is usually expressed in seconds, but Javascript uses Milliseconds)
+         var epoch = epoch + new Date().getTimezoneOffset() * -1; //for timeZone
+         return new Date(epoch);
+      }
+
+      function numberWithCommas(x) {
+         return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+      }
+   </script>
+</body>
+</html>

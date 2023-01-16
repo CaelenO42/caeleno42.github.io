@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!-- Google tag (gtag.js) -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4V9R8G4YT7"></script>
+   <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'G-4V9R8G4YT7');
+   </script>
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>CaelenO42</title>
+   <link rel="icon" href="images/favicon.png" />
+   <link rel="stylesheet" type="text/css" href="css/nether-coords.css" />
+   <script src="https://kit.fontawesome.com/56b07f00c9.js" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet" />
+</head>
+<body>
+   <div class="nether-coords">
+      <img src="#" class="icon" />
+      <p class="title"><span></span></p>
+      <p class="desc"><span></span></p>
+      <p class="downloads">downloads<span></span></p>
+      <p class="followers">followers<span></span></p>
+      <p class="date">last updated<span></span></p>
+      <p class="versions">versions<span></span></p>
+      <p class="versions">get it on
+      <div class="links">
+         <a href="https://modrinth.com/mod/nether-coords" target="_blank">
+            <img src="../images/modrinth.svg">
+            Modrinth
+         </a>
+         <a href="https://www.curseforge.com/minecraft/mc-mods/nether-coords-fabric" target="_blank">
+            <img src="images/anvil.svg">
+            CurseForge
+         </a>
+      </div>
+      </p>
+   </div>
+   <script>
+      var netherCoordsCurseForge = {};
+      var netherCoordsModrinth = {};
+
+      printData();
+
+      async function getData() {
+         const headers = {
+            Accept: "application/json",
+            "x-api-key": "$2a$10$6HuQKq8eExI7h5mibIemeeUDvWS/MYKw19LWe9tN2Ikee.JDa.Nm.",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With",
+         };
+
+         await fetch("https://api.curseforge.com/v1/mods/670779", {
+            method: "GET",
+
+            headers: headers,
+         })
+            .then(function (res) {
+               return res.json();
+            })
+            .then(function (body) {
+               console.log(body.data);
+               netherCoordsCurseForge = body.data;
+            });
+
+         await $.getJSON("https://api.modrinth.com/v2/project/KHwGUCPn", function (e) {
+            console.log(e);
+            netherCoordsModrinth = e;
+         });
+      }
+
+      async function printData() {
+         await getData();
+
+         $(".nether-coords > .title > span").html(netherCoordsCurseForge.name);
+         $(".nether-coords > .desc > span").html(netherCoordsCurseForge.summary);
+         $(".nether-coords > .date > span").html(EpochToDate(Date.parse(netherCoordsCurseForge.dateModified)).toLocaleDateString());
+         $(".nether-coords > .icon").attr("src", netherCoordsCurseForge.logo.url);
+         $(".nether-coords > .downloads > span").html(numberWithCommas(netherCoordsCurseForge.downloadCount + netherCoordsModrinth.downloads));
+
+         let netherVersions = "";
+         for (var i = 0; i < netherCoordsCurseForge.latestFiles[netherCoordsCurseForge.latestFiles.length - 1].gameVersions.length; i++) {
+            if (netherCoordsCurseForge.latestFiles[netherCoordsCurseForge.latestFiles.length - 1].gameVersions[i] == "Fabric") continue;
+            netherVersions += netherCoordsCurseForge.latestFiles[netherCoordsCurseForge.latestFiles.length - 1].gameVersions[i];
+            if (i != netherCoordsCurseForge.latestFiles[netherCoordsCurseForge.latestFiles.length - 1].gameVersions.length - 1) netherVersions += ", ";
+         }
+         console.log(`Nether ${netherVersions}`);
+         $(".nether-coords > .versions > span").html(netherVersions);
+
+         $(".nether-coords > .followers > span").html(netherCoordsModrinth.followers);
+      }
+
+      function EpochToDate(epoch) {
+         if (epoch < 10000000000) epoch *= 1000; // convert to milliseconds (Epoch is usually expressed in seconds, but Javascript uses Milliseconds)
+         var epoch = epoch + new Date().getTimezoneOffset() * -1; //for timeZone
+         return new Date(epoch);
+      }
+
+      function numberWithCommas(x) {
+         return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+      }
+   </script>
+</body>
+</html>

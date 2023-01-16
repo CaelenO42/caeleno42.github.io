@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
    <head>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-4V9R8G4YT7"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag() {
+            dataLayer.push(arguments);
+         }
+         gtag("js", new Date());
+
+         gtag("config", "G-4V9R8G4YT7");
+      </script>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
       <title>C42 | &lt;meter\&gt;</title>
@@ -20,7 +31,7 @@
          <textarea id="textbox" placeholder="Express your feelings here" rows="6" cols="50"></textarea>
          <button onclick="saveText()">Submit</button>
          <button onclick="confirmClear()">Clear All Data</button>
-         <button onclick="window.location.href = '../index.html'">Back to Home</button>
+         <button onclick="window.location.href = '../'">Back to Home</button>
          <div class="user_text"></div>
       </div>
       <div class="desc">
@@ -28,7 +39,7 @@
          <p>The meter is a place to catalouge your problems with whatever you want. You can change the meter positive or negative and write little notes and the data will save for when you return to the page.</p>
          <p>
             <strong>
-               Any data on the website is stored locally on your devide and is never sent to anyone including me. All of the code is also open source on <a href="https://github.com/CaelenO42/caeleno42.github.io" target="_blank">GitHub</a> if you want
+               Any data on the website is stored locally on your device and is never sent to anyone including me. All of the code is also open source on <a href="https://github.com/CaelenO42/caeleno42.github.io" target="_blank">GitHub</a> if you want
                to take a look.
             </strong>
          </p>
